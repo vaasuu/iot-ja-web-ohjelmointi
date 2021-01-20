@@ -1,28 +1,40 @@
 h1 {
-  color: #c72224;
+  color: #1e1e1e;
 }
-
 body {
-  background-color: white;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 12pt;
+  margin: auto;
+  background: #f2f2f2;
+  color: #1e1e1e;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.8;
+  max-width: 90%;
 }
 
-/* p {
-  padding: 10px;
-} */
+img {
+  max-width: 100%;
+  height: auto;
+}
 
 @media (prefers-color-scheme: dark) {
+  h1 {
+    color: #ebebeb;
+  }
+
   body {
     background: #1e1e1e;
-    color: #dddddd;
+    color: #f2f2f2;
   }
 
-  a:visited {
-    color: rgb(202, 137, 17);
-  }
-
-  a:link {
+  a {
     color: orange;
+    border-bottom: 1px solid orange;
+    text-decoration: none;
+  }
+
+  a:hover {
+    color: rgb(202, 137, 17);
+    border-bottom: 0;
   }
 }
