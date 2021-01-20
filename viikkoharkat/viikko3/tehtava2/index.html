@@ -1,37 +1,48 @@
 <!DOCTYPE html>
 <html lang="fi">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kertolasku testi</title>
     <script src="/scripts.js"></script>
+  </head>
+  <body>
+    <noscript>Your browser does not support JavaScript or you have turned it off. Please enable JavaScript to use this site.</noscript>
     <div>
-        <table>
-            <tbody>
-            <tr>
-                <td id="question1">Question1</td>
-                <td><input type="number" name="Answer" id="input1"></td>
-                <td id="status1"></td>
-            </tr>
-            <tr>
-                <td id="question2">Question2</td>
-                <td><input type="number" name="Answer" id="input2"></td>
-                <td id="status2"></td>
-            </tr>
-            <tr>
-                <td id="question3">Question3</td>
-                <td><input type="number" name="Answer" id="input3"></td>
-                <td id="status3"></td>
-            </tr>
-            </tbody>
-            </table>
+      <div id="score">0/0</div>
+      <table>
+        <tbody>
+          <tr>
+            <td id="question1">Question1</td>
+            <td><input type="number" name="Answer" id="input1" /></td>
+            <td id="status1"></td>
+          </tr>
+          <tr>
+            <td id="question2">Question2</td>
+            <td><input type="number" name="Answer" id="input2" /></td>
+            <td id="status2"></td>
+          </tr>
+          <tr>
+            <td id="question3">Question3</td>
+            <td><input type="number" name="Answer" id="input3" /></td>
+            <td id="status3"></td>
+          </tr>
+        </tbody>
+      </table>
 
-        
-        <button type="submit" id="checkAnswerBtn" onclick="checkAnswer()">Tarkista</button>
-        <button type="submit" id="newBtn" onclick="fillNewNumbers()">Arvo uudet luvut</button>
-        <button type="submit" id="giveRightAnswerBtn" onclick="giveRightAnswers()">Oikeat vastaukset</button>
+      <button type="submit" id="checkAnswerBtn" onclick="checkAnswer()">
+        Tarkista
+      </button>
+      <button type="submit" id="newBtn" onclick="fillNewNumbers()">
+        Lisää laskuja
+      </button>
+      <button
+        type="submit"
+        id="giveRightAnswerBtn"
+        onclick="giveRightAnswers()"
+      >
+        Oikeat vastaukset
+      </button>
     </div>
-</body>
+  </body>
 </html>
