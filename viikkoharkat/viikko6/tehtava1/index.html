@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fi">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,7 +8,23 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
+    <h1>Week 6 task 1</h1>
+    <form id="formThingy">
+        <p>Typistettävä teksti</p>
+        <textarea form="" placeholder="Lorem ipsum dolor sit amet…" name="truncationTextInputBox" id="truncationTextInputBox" cols="30" rows="3"></textarea>
+        <br>
+        <label for="truncateCharAmountNumber">Typistettävien merkkien määrä</label>
+        <select id="truncateCharAmountNumber">
+            <option value="1">1</option>
+            <option value="3">3</option>
+            <option value="5">5</option>
+            <option value="7">7</option>
+            <option value="10">10</option>
+        </select>
+        <button id="truncateBtn" type="button">Typistä</button>
+    </form>
+    <p>Tulos:</p>
+    <p id="truncatedText"></p>
     <script src="script.js"></script>
 </body>
 </html>
