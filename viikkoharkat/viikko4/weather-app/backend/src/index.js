@@ -19,7 +19,7 @@ const apiPath = "/api/v1";
 const connectionSettings = {
   host: 'db',
   user: 'root',
-  database: 'db_1',
+  database: 'tietokanta',
   password: 'db_rootpass',
   namedPlaceholders: true,
 };
