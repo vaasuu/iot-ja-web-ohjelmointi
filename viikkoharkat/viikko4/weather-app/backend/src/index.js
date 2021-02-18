@@ -42,10 +42,10 @@ const connectionSettings = {
 
 
 
-// Lisätään test-routerille reitti http GET-kutsulle polkuun <serveri:portti>/api/v1/getdata/
+// Lisätään test-routerille reitti http GET-kutsulle polkuun <serveri:portti>/api/v1/data/
 // (.get == määritellään GET-kutsulle reitti)
 // huom. pitää olla async, koska tehdään tietokantaan operaatio
-test.get(`${apiPath}/getdata`, async (ctx) => {
+test.get(`${apiPath}/data`, async (ctx) => {
   try {
     const conn = await mysql.createConnection(connectionSettings);
     const [data] = await conn.execute(`
@@ -66,7 +66,7 @@ test.get(`${apiPath}/getdata`, async (ctx) => {
   }
 });
 
-test.post(`${apiPath}/postdata`, koaBody, async (ctx) => {
+test.post(`${apiPath}/data`, koaBody, async (ctx) => {
   const { device_id, data } = ctx.request.body;
 
   console.log(`device_id: ${device_id}`);
@@ -92,7 +92,7 @@ test.post(`${apiPath}/postdata`, koaBody, async (ctx) => {
 
 
 // Rekisteröidään koa-appikselle koa-routeriin (nimeltä "test") määritellyt reitit middlewarena
-// eli tämän jälkeen koa-app osaa vastata tuohon GETiin polussa /api/v1/getdata/
+// eli tämän jälkeen koa-app osaa vastata tuohon GETiin polussa /api/v1/data/
 app.use(test.routes());
 
 // rekisteröidään myös koa-routerin tarjoama valmis middleware, joka vastaa OPTIONS-kutsuun sen mukaan, mitä routeriin on konfiguroitu
