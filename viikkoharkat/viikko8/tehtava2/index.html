@@ -10,7 +10,7 @@
 <body>
     <h1>Pohjoimaiden kuukauden koronahistoria</h1>
     <div>
-        <form>
+        <form id="form">
         <label for="country">Valitse Pohjoismaa, jonka korona dataa haluat nähdä</label>
         <br>
         <select name="country" id="country">
@@ -22,6 +22,8 @@
         </select>
         <button type="submit">Hae koronadataa</button>
         </form>
+        
+        <p>Nykyinen näytetty maa: <span id=currentCountry>N/A</span></p>
         
         <table>
             <thead>
