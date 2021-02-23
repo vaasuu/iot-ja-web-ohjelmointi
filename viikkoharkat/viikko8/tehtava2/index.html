@@ -8,6 +8,35 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <h1>Pohjoimaiden kuukauden koronahistoria</h1>
+    <div>
+        <form>
+        <label for="country">Valitse Pohjoismaa, jonka korona dataa haluat nähdä</label>
+        <br>
+        <select name="country" id="country">
+        <option value="fi">Suomi</option>
+        <option value="is">Islanti</option>
+        <option value="no">Norja</option>
+        <option value="se">Ruotsi</option>
+        <option value="dk">Tanska</option>
+        </select>
+        <button type="submit">Hae koronadataa</button>
+        </form>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Date</th>
+                    <th>Confirmed</th>
+                    <th>Recovered</th>
+                    <th>Deaths</th>
+                </tr>
+            </thead>
+            <tbody id="tablebody"></tbody>
+        </table>
+    </div>
+
     <script src="script.js"></script>
 </body>
 </html>
