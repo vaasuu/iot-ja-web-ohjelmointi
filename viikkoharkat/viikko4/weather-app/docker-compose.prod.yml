@@ -16,7 +16,7 @@ services:
         - /var/lib/mysql
     environment:
         MYSQL_ROOT_PASSWORD: db_rootpass
-        MYSQL_DATABASE: tietokanta
+        MYSQL_DATABASE: db_1
     restart: always
   mywebsql:
     image: quantumobject/docker-mywebsql
