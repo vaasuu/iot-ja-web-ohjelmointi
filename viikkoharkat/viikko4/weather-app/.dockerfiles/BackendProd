@@ -7,4 +7,4 @@ RUN cd /opt/app && npm install
 WORKDIR /opt/app
 EXPOSE 9000
 
-CMD ["npm", "run", "dev"]
+CMD ["npm", "run", "start"]

@@ -9,6 +9,15 @@ services:
     volumes:
       - ./backend:/opt/app
     restart: always
+  frontend:
+    build:
+      context: ./
+      dockerfile: .dockerfiles/FrontendDev
+    ports:
+      - "9002:80"
+    volumes:
+      - ./frontend:/opt/app
+    restart: always
   backend_test:
     build:
       context: ./
