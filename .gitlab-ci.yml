@@ -9,7 +9,7 @@ deploy:
   only:
     changes:
       - .gitlab-ci.yml
-      - weather-app/**/*
+      - viikkoharkat/viikko4/weather-app/**/*
   image: docker:latest
   stage: deploy
   services:
