@@ -15,7 +15,7 @@ deploy:
   services:
     - docker:dind
   script:
-    - cd weather-app
+    - cd viikkoharkat/viikko4/weather-app
     - export FRONTEND_IMAGE="${CI_REGISTRY_IMAGE}/${REMOTE_DIR}/frontend"
     - export BACKEND_IMAGE="${CI_REGISTRY_IMAGE}/${REMOTE_DIR}/backend"
     - apk update && apk add rsync openssh
