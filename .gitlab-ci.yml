@@ -1,5 +1,5 @@
 variables:
-    REMOTE_HOST: deploy@172.16.5.138 # tahan oma ip !!!!!!
+    REMOTE_HOST: deploy@iotweb131 # tahan oma ip !!!!!!
     REMOTE_DIR: weather-app
   
 stages:
