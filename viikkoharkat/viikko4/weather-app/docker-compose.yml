@@ -18,16 +18,6 @@ services:
     volumes:
       - ./frontend:/opt/app
     restart: always
-  backend_test:
-    build:
-      context: ./
-      dockerfile: .dockerfiles/BackendDev
-    command: npm run test:watch
-    ports:
-      - "9005:9005"
-    volumes:
-      - ./backend:/opt/app
-    restart: always
   db:
     image: mysql:8.0.3
     volumes:
