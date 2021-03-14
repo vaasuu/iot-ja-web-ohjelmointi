@@ -4,6 +4,16 @@ import Router from "koa-router";
 import mysql from "mysql2/promise";
 import KoaBody from 'koa-bodyparser';
 
+import { connectionSettings } from './settings';
+import { databaseReady } from './helpers';
+import { initDB } from './fixtures';
+
+// Käynnistettäessä, (eli kerran) ajettava funktio, databaseReady tarkistaa onko tietokanta valmis 
+// initDB tarkistaa onko haluttua taulukkoa(table) olemassa ja jos ei, luo sen 
+(async () => {
+  await databaseReady();
+  await initDB();
+})();
 
 // The port that this server will run on, defaults to 9000
 const port = process.env.PORT || 9000;
@@ -24,20 +34,7 @@ const test = new Router();
 // Define API path
 const apiPath = "/api/v1";
 
-const connectionSettings = {
-  host: "db",
-  user: "root",
-  database: "db_1",
-  password: "db_rootpass",
-  namedPlaceholders: true,
-};
 
-// Käynnistettäessä, (eli kerran) ajettava funktio, databaseReady tarkistaa onko tietokanta valmis 
-// initDB tarkistaa onko haluttua taulukkoa(table) olemassa ja jos ei, luo sen 
-(async () => {
-  await databaseReady();
-  await initDB();
-})();
 
 
 
@@ -107,43 +104,5 @@ console.log(`App listening on port ${port}`);
 
 
 
-async function databaseReady(){
-  function sleep(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-  }
-    console.log('Entering databaseReady()');
-    for (; ;) {
-      try {
-        await mysql.createConnection(connectionSettings);
-        break;
-      } catch (error) {
-        console.log('DB not ready, retrying in 1 sec..');
-        await sleep(1000);
-      }
-    }
-};
 
 
-async function initDB(){
-    const conn = await mysql.createConnection(connectionSettings);
-    try {
-      await conn.execute(`
-          SELECT *
-          FROM weather
-        `);
-    } catch (error) {
-      // If table does not exist, create it
-      if (error.errno === 1146) {
-        console.log('Initializing table: weather');
-        await conn.execute(`
-          CREATE TABLE weather (
-            id serial primary key,
-            device_id varchar(100),
-            date_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-            data json
-          )
-        `);
-        console.log('...success!');
-      }
-    }
-};
