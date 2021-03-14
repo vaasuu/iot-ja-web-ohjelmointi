@@ -15,6 +15,8 @@ import { initDB } from './fixtures';
   await initDB();
 })();
 
+const pool = mysql.createPool(connectionSettings);
+
 // The port that this server will run on, defaults to 9000
 const port = process.env.PORT || 9000;
 
@@ -44,8 +46,7 @@ const apiPath = "/api/v1";
 // huom. pitää olla async, koska tehdään tietokantaan operaatio
 test.get(`${apiPath}/data`, async (ctx) => {
   try {
-    const conn = await mysql.createConnection(connectionSettings);
-    const [data] = await conn.execute(`
+    const [data] = await pool.query(`
         SELECT *
         FROM weather
       `);
@@ -68,11 +69,10 @@ test.post(`${apiPath}/data`, koaBody, async (ctx) => {
 
   console.log(`device_id: ${device_id}`);
   console.log(`data: ${data}`);
-
+  console.log(ctx.request.body)
+  
   try {
-    const conn = await mysql.createConnection(connectionSettings);
-
-    const [status] = await conn.execute(`
+    const [status] = await pool.query(`
           INSERT INTO weather (device_id, data)
           VALUES (:device_id, :data);
         `, { device_id, data });
