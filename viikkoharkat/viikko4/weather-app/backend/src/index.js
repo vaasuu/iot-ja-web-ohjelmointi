@@ -46,7 +46,7 @@ const apiPath = "/api/v1";
 // huom. pitää olla async, koska tehdään tietokantaan operaatio
 test.get(`${apiPath}/data`, async (ctx) => {
   try {
-    const [data] = await pool.query(`
+    const [data] = await pool.execute(`
         SELECT *
         FROM weather
       `);
@@ -72,7 +72,7 @@ test.post(`${apiPath}/data`, koaBody, async (ctx) => {
   //console.log("ctx.request.body = ", ctx.request.body)
   
   try {
-    const [status] = await pool.query(`
+    const [status] = await pool.execute(`
           INSERT INTO weather (device_id, data)
           VALUES (:device_id, :data);
         `, { device_id, data });
