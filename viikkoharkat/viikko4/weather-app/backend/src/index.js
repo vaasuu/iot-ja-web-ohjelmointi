@@ -68,8 +68,8 @@ test.post(`${apiPath}/data`, koaBody, async (ctx) => {
   const { device_id, data } = ctx.request.body;
 
   console.log(`device_id: ${device_id}`);
-  console.log(`data: ${data}`);
-  console.log(ctx.request.body)
+  console.log("data: ", data);
+  //console.log("ctx.request.body = ", ctx.request.body)
   
   try {
     const [status] = await pool.query(`
