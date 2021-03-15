@@ -44,7 +44,7 @@ const apiPath = "/api/v1";
 // Lisätään test-routerille reitti http GET-kutsulle polkuun <serveri:portti>/api/v1/data/
 // (.get == määritellään GET-kutsulle reitti)
 // huom. pitää olla async, koska tehdään tietokantaan operaatio
-test.get(`${apiPath}/data`, async (ctx) => {
+test.get(`${apiPath}/weather`, async (ctx) => {
   try {
     const [data] = await pool.execute(`
         SELECT *
@@ -64,7 +64,7 @@ test.get(`${apiPath}/data`, async (ctx) => {
   }
 });
 
-test.post(`${apiPath}/data`, koaBody, async (ctx) => {
+test.post(`${apiPath}/weather`, koaBody, async (ctx) => {
   const { device_id, data } = ctx.request.body;
 
   console.log(`device_id: ${device_id}`);
