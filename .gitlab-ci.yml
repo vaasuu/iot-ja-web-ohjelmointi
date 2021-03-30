@@ -1,0 +1,43 @@
+variables:
+  REMOTE_HOST: deploy@iotweb131  # <-- VAIHTAKAA "iotweb000" TILALLE OMAN HENK. KOHT. KONEEN HOSTNAME
+  REMOTE_DIR: remote_dir_loppuharjoitus
+
+stages:
+  - deploy
+
+deploy_loppuharjoitus:
+  only:
+    changes:
+      - .gitlab-ci.yml
+      - "loppuharjoitus/**/*"
+  image: docker:latest
+  stage: deploy
+  services:
+    - docker:dind
+  script:
+    - export FRONTEND_IMAGE="${CI_REGISTRY_IMAGE}/${REMOTE_DIR}/frontend"
+    # Uncomment line below if your app includes backend
+    #- export BACKEND_IMAGE="${CI_REGISTRY_IMAGE}/${REMOTE_DIR}/backend"
+    - apk update && apk add rsync openssh
+    - docker login -u gitlab-ci-token -p "${CI_JOB_TOKEN}" "${CI_REGISTRY}"
+    - mkdir -p ~/.ssh && (umask  077 ; echo "${DEPLOY_KEY_PRIVATE}" | base64 -d > ~/.ssh/id_rsa)
+    - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
+    - cd "${CI_PROJECT_DIR}/loppuharjoitus/frontend"
+    - docker build --no-cache -f DockerfileProd -t "${FRONTEND_IMAGE}" .
+    - docker push "${FRONTEND_IMAGE}"
+    # Uncomment lines below if your app includes backend
+    #- cd "${CI_PROJECT_DIR}/loppuharjoitus/backend"
+    #- docker build --no-cache -f DockerfileProd -t "${BACKEND_IMAGE}" .
+    #- docker push "${BACKEND_IMAGE}"
+    - cd "${CI_PROJECT_DIR}/loppuharjoitus"
+    - mkdir "${REMOTE_DIR}"
+    - cp docker-compose.prod.yml "${REMOTE_DIR}/docker-compose.yml"
+    - echo "FRONTEND_IMAGE=${FRONTEND_IMAGE}" >> "${REMOTE_DIR}/.env"
+    - rsync -r "${REMOTE_DIR}" "${REMOTE_HOST}:./"
+    - ssh ${REMOTE_HOST} /bin/bash "
+      echo ${REMOTE_DIR};
+      cd ~/$REMOTE_DIR;
+      docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY;
+      docker-compose pull;
+      docker-compose up -d --force-recreate
+      "
