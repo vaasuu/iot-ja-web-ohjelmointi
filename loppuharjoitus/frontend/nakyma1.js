@@ -1,3 +1,5 @@
+import {units} from "/units.js";
+console.log("units", units);
 const tableBody = document.getElementById("tablebody");
 
 const myAsyncFunction = async () => {
@@ -12,24 +14,14 @@ const myAsyncFunction = async () => {
   console.log("data:", signals);
 
   for (let index in signals) {
-    signal = signals[index];
     // console.log(index);
+    let signal = signals[index];
     // console.log(signal);
     // console.log(signal.data);
     // create a row table element
     const row = document.createElement("tr");
 
-    key = Object.keys(signal.data)[0];
-
-    let units = {
-      humidity_in: "%",
-      humidity_out: "0..1",
-      light: "¯\\_(ツ)_/¯",
-      rain: "¯\\_(ツ)_/¯",
-      temperature: "°C",
-      wind_direction: "°",
-      wind_speed: "m/s",
-    };
+    let key = Object.keys(signal.data)[0];
 
     // console.log("units", units);
 
@@ -38,7 +30,7 @@ const myAsyncFunction = async () => {
     console.log(cellDataArray);
 
     // create a cell for every value on row array
-    for (cellData of cellDataArray) {
+    for (let cellData of cellDataArray) {
       // create the data cell element
       const cell = document.createElement("td");
       // create the Text Node with the data
