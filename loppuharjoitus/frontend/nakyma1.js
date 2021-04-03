@@ -5,7 +5,7 @@ const myAsyncFunction = async () => {
   const response = await fetch(
     "http://webapi19sa-1.course.tamk.cloud/v1/weather/limit/50"
   );
-  console.log(response);
+  // console.log(response);
 
   // get the json response
   const signals = await response.json();
@@ -13,9 +13,9 @@ const myAsyncFunction = async () => {
 
   for (let index in signals) {
     signal = signals[index];
-    console.log(index);
+    // console.log(index);
     // console.log(signal);
-    console.log(signal.data);
+    // console.log(signal.data);
     // create a row table element
     const row = document.createElement("tr");
 
@@ -31,7 +31,7 @@ const myAsyncFunction = async () => {
       wind_speed: "m/s",
     };
 
-    console.log("units", units);
+    // console.log("units", units);
 
     const cellDataArray = [signal.date_time, key, signal.data[key], units[key]];
 
