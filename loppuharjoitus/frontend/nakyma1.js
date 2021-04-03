@@ -13,11 +13,9 @@ const myAsyncFunction = async () => {
   const signals = await response.json();
   console.log("data:", signals);
 
-  for (let index in signals) {
-    // console.log(index);
-    let signal = signals[index];
+  for (let signal of signals) {
     // console.log(signal);
-    // console.log(signal.data);
+
     // create a row table element
     const row = document.createElement("tr");
 
