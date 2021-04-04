@@ -1,0 +1,784 @@
+Last login: Tue Feb  9 00:33:54 on ttys005
+Hackintosh:weather-app valtteri$ docker-compose logs -f
+Attaching to 
+Hackintosh:weather-app valtteri$ docker-compose logs -f
+Attaching to weather-app_backend_1, weather-app_backend_test_1, weather-app_mywebsql_1, weather-app_db_1
+db_1            | Initializing database
+db_1            | 2021-02-08T22:35:30.759151Z 0 [Note] Basedir set to /usr/
+db_1            | 2021-02-08T22:35:30.759341Z 0 [Warning] The syntax '--symbolic-links/-s' is deprecated and will be removed in a future release
+db_1            | 2021-02-08T22:35:30.763180Z 0 [Warning] You need to use --log-bin to make --log-slave-updates work.
+db_1            | libnuma: Warning: /sys not mounted or invalid. Assuming one node: No such file or directory
+db_1            | mbind: Operation not permitted
+db_1            | mbind: Operation not permitted
+mywebsql_1      | Starting pre-service scritps in /etc/my_init.d
+mywebsql_1      | *** Running: /etc/my_init.d/startup.sh
+mywebsql_1      | starting rc.local scritps
+mywebsql_1      | Booting runit daemon...
+mywebsql_1      | Process runsvdir running with PID 131
+backend_1       | 
+backend_1       | > backend@1.0.0 dev
+backend_1       | > nodemon src/index.js -w src --exec babel-node
+backend_1       | 
+backend_test_1  | 
+backend_test_1  | > backend@1.0.0 test:watch
+backend_test_1  | > nodemon -w src --exec 'npm test'
+backend_test_1  | 
+backend_1       | [nodemon] 2.0.7
+backend_1       | [nodemon] to restart at any time, enter `rs`
+backend_1       | [nodemon] watching path(s): src/**/*
+backend_1       | [nodemon] watching extensions: js,mjs,json
+backend_1       | [nodemon] starting `babel-node src/index.js`
+backend_test_1  | [nodemon] 2.0.7
+backend_test_1  | [nodemon] to restart at any time, enter `rs`
+backend_test_1  | [nodemon] watching path(s): src/**/*
+backend_test_1  | [nodemon] watching extensions: js,mjs,json
+backend_test_1  | [nodemon] starting `npm test`
+db_1            | 2021-02-08T22:35:33.515056Z 0 [Warning] No existing UUID has been found, so we assume that this is the first time that this server has been started. Generating a new UUID: f4b83f1d-6a5d-11eb-9981-0242ac150003.
+db_1            | 2021-02-08T22:35:33.516728Z 0 [Warning] You have not provided a mandatory server-id. Servers in a replication topology must have unique server-ids. Please refer to the proper server start-up parameters documentation.
+db_1            | 2021-02-08T22:35:33.518661Z 0 [Warning] Gtid table is not ready to be used. Table 'mysql.gtid_executed' cannot be opened.
+db_1            | 2021-02-08T22:35:33.519968Z 5 [Warning] root@localhost is created with an empty password ! Please consider switching off the --initialize-insecure option.
+backend_test_1  | 
+backend_test_1  | > backend@1.0.0 test
+backend_test_1  | > npm run lint:prettier
+backend_test_1  | 
+backend_test_1  | 
+backend_test_1  | > backend@1.0.0 lint:prettier
+backend_test_1  | > npx prettier --check 'src/**/*'
+backend_test_1  | 
+db_1            | 2021-02-08T22:35:34.996334Z 5 [Warning] 'user' entry 'mysql.session@localhost' ignored in --skip-name-resolve mode.
+db_1            | 2021-02-08T22:35:34.997079Z 5 [Warning] 'user' entry 'mysql.sys@localhost' ignored in --skip-name-resolve mode.
+db_1            | 2021-02-08T22:35:34.997181Z 5 [Warning] 'user' entry 'root@localhost' ignored in --skip-name-resolve mode.
+db_1            | 2021-02-08T22:35:34.997470Z 5 [Warning] 'db' entry 'performance_schema mysql.session@localhost' ignored in --skip-name-resolve mode.
+db_1            | 2021-02-08T22:35:34.997531Z 5 [Warning] 'db' entry 'sys mysql.sys@localhost' ignored in --skip-name-resolve mode.
+db_1            | 2021-02-08T22:35:34.997564Z 5 [Warning] 'proxies_priv' entry '@ root@localhost' ignored in --skip-name-resolve mode.
+db_1            | 2021-02-08T22:35:35.000001Z 5 [Warning] 'tables_priv' entry 'user mysql.session@localhost' ignored in --skip-name-resolve mode.
+db_1            | 2021-02-08T22:35:35.000093Z 5 [Warning] 'tables_priv' entry 'sys_config mysql.sys@localhost' ignored in --skip-name-resolve mode.
+db_1            | Database initialized
+db_1            | Initializing certificates
+db_1            | Generating a 2048 bit RSA private key
+db_1            | ...........................................+++
+db_1            | .......+++
+db_1            | unable to write 'random state'
+db_1            | writing new private key to 'ca-key.pem'
+db_1            | -----
+db_1            | Generating a 2048 bit RSA private key
+db_1            | .....................................+++
+db_1            | ...+++
+db_1            | unable to write 'random state'
+db_1            | writing new private key to 'server-key.pem'
+db_1            | -----
+db_1            | Generating a 2048 bit RSA private key
+db_1            | .........+++
+db_1            | .................+++
+db_1            | unable to write 'random state'
+db_1            | writing new private key to 'client-key.pem'
+db_1            | -----
+db_1            | Certificates initialized
+db_1            | MySQL init process in progress...
+backend_test_1  | npm WARN exec The following package was not found and will be installed: prettier
+db_1            | 2021-02-08T22:35:38.775152Z 0 [Note] Basedir set to /usr/
+db_1            | 2021-02-08T22:35:38.775338Z 0 [Warning] The syntax '--symbolic-links/-s' is deprecated and will be removed in a future release
+db_1            | 2021-02-08T22:35:38.775392Z 0 [Note] --secure-file-priv is set to NULL. Operations related to importing and exporting data are disabled
+db_1            | 2021-02-08T22:35:38.775415Z 0 [Note] /usr/sbin/mysqld (mysqld 8.0.3-rc-log) starting as process 90 ...
+db_1            | 2021-02-08T22:35:38.780374Z 0 [Warning] No argument was provided to --log-bin, and --log-bin-index was not used; so replication may break when this MySQL server acts as a master and has his hostname changed!! Please use '--log-bin=aeface466db8-bin' to avoid this problem.
+db_1            | 2021-02-08T22:35:38.830235Z 0 [Note] InnoDB: Using Linux native AIO
+db_1            | 2021-02-08T22:35:38.830343Z 0 [Note] Plugin 'FEDERATED' is disabled.
+db_1            | 2021-02-08T22:35:38.832206Z 1 [Note] InnoDB: PUNCH HOLE support available
+db_1            | 2021-02-08T22:35:38.832823Z 1 [Note] InnoDB: Mutexes and rw_locks use GCC atomic builtins
+db_1            | 2021-02-08T22:35:38.832854Z 1 [Note] InnoDB: Uses event mutexes
+db_1            | 2021-02-08T22:35:38.832859Z 1 [Note] InnoDB: GCC builtin __atomic_thread_fence() is used for memory barrier
+db_1            | 2021-02-08T22:35:38.832862Z 1 [Note] InnoDB: Compressed tables use zlib 1.2.11
+db_1            | 2021-02-08T22:35:38.833098Z 1 [Note] InnoDB: Number of pools: 1
+db_1            | 2021-02-08T22:35:38.833199Z 1 [Note] InnoDB: Using CPU crc32 instructions
+db_1            | 2021-02-08T22:35:38.834821Z 1 [Note] InnoDB: Initializing buffer pool, total size = 128M, instances = 1, chunk size = 128M
+db_1            | libnuma: Warning: /sys not mounted or invalid. Assuming one node: No such file or directory
+db_1            | mbind: Operation not permitted
+db_1            | mbind: Operation not permitted
+db_1            | 2021-02-08T22:35:38.871928Z 1 [Note] InnoDB: Completed initialization of buffer pool
+db_1            | 2021-02-08T22:35:38.880657Z 0 [Note] InnoDB: If the mysqld execution user is authorized, page cleaner thread priority can be changed. See the man page of setpriority().
+db_1            | 2021-02-08T22:35:38.897352Z 1 [Note] InnoDB: Using 'tablespaces.open.1' max LSN: 13791139
+db_1            | 2021-02-08T22:35:38.908775Z 1 [Note] InnoDB: Applying a batch of 0 redo log records ...
+db_1            | 2021-02-08T22:35:38.908893Z 1 [Note] InnoDB: Apply batch completed!
+db_1            | 2021-02-08T22:35:38.909916Z 1 [Note] InnoDB: Opened 2 existing undo tablespaces.
+db_1            | 2021-02-08T22:35:38.934219Z 1 [Note] InnoDB: Creating shared tablespace for temporary tables
+db_1            | 2021-02-08T22:35:38.934579Z 1 [Note] InnoDB: Setting file './ibtmp1' size to 12 MB. Physically writing the file full; Please wait ...
+db_1            | 2021-02-08T22:35:39.000322Z 1 [Note] InnoDB: File './ibtmp1' size is now 12 MB.
+db_1            | 2021-02-08T22:35:39.002786Z 1 [Note] InnoDB: Created 128 and tracked 128 new rollback segment(s) in the temporary tablespace. 128 are now active.
+db_1            | 2021-02-08T22:35:39.003063Z 1 [Note] InnoDB: 8.0.3 started; log sequence number 15050578
+db_1            | 2021-02-08T22:35:39.217070Z 0 [Note] InnoDB: Loading buffer pool(s) from /var/lib/mysql/ib_buffer_pool
+db_1            | 2021-02-08T22:35:39.232109Z 0 [Note] InnoDB: Buffer pool(s) load completed at 210208 22:35:39
+db_1            | 2021-02-08T22:35:39.277786Z 1 [Note] Found data dictionary with version 1
+db_1            | 2021-02-08T22:35:39.341589Z 0 [Note] InnoDB: DDL log recovery : begin
+db_1            | 2021-02-08T22:35:39.341662Z 0 [Note] InnoDB: DDL log recovery : end
+db_1            | 2021-02-08T22:35:39.341879Z 0 [Note] InnoDB: Waiting for purge to start
+db_1            | MySQL init process in progress...
+db_1            | 2021-02-08T22:35:39.396487Z 0 [Warning] You have not provided a mandatory server-id. Servers in a replication topology must have unique server-ids. Please refer to the proper server start-up parameters documentation.
+db_1            | 2021-02-08T22:35:39.399626Z 0 [Note] Found ca.pem, server-cert.pem and server-key.pem in data directory. Trying to enable SSL support using them.
+db_1            | 2021-02-08T22:35:39.400033Z 0 [Warning] CA certificate ca.pem is self signed.
+db_1            | 2021-02-08T22:35:39.444343Z 0 [Warning] 'user' entry 'mysql.session@localhost' ignored in --skip-name-resolve mode.
+db_1            | 2021-02-08T22:35:39.444414Z 0 [Warning] 'user' entry 'mysql.sys@localhost' ignored in --skip-name-resolve mode.
+db_1            | 2021-02-08T22:35:39.444425Z 0 [Warning] 'user' entry 'root@localhost' ignored in --skip-name-resolve mode.
+db_1            | 2021-02-08T22:35:39.444446Z 0 [Warning] 'db' entry 'performance_schema mysql.session@localhost' ignored in --skip-name-resolve mode.
+db_1            | 2021-02-08T22:35:39.444466Z 0 [Warning] 'db' entry 'sys mysql.sys@localhost' ignored in --skip-name-resolve mode.
+db_1            | 2021-02-08T22:35:39.444478Z 0 [Warning] 'proxies_priv' entry '@ root@localhost' ignored in --skip-name-resolve mode.
+db_1            | 2021-02-08T22:35:39.450404Z 0 [Warning] 'tables_priv' entry 'user mysql.session@localhost' ignored in --skip-name-resolve mode.
+db_1            | 2021-02-08T22:35:39.450446Z 0 [Warning] 'tables_priv' entry 'sys_config mysql.sys@localhost' ignored in --skip-name-resolve mode.
+db_1            | 2021-02-08T22:35:39.461377Z 0 [Note] /usr/sbin/mysqld: ready for connections. Version: '8.0.3-rc-log'  socket: '/var/run/mysqld/mysqld.sock'  port: 0  MySQL Community Server (GPL)
+db_1            | 2021-02-08T22:35:39.461529Z 4 [Note] Event Scheduler: scheduler thread started with id 4
+backend_test_1  | Checking formatting...
+backend_test_1  | [warn] src/index.js
+backend_test_1  | [warn] Code style issues found in the above file(s). Forgot to run Prettier?
+backend_test_1  | npm ERR! code 1
+backend_test_1  | npm ERR! path /opt/app
+backend_test_1  | npm ERR! command failed
+backend_test_1  | npm ERR! command sh -c prettier "--check" "src/**/*"
+backend_test_1  | 
+backend_test_1  | npm ERR! A complete log of this run can be found in:
+backend_test_1  | npm ERR!     /root/.npm/_logs/2021-02-08T22_35_41_238Z-debug.log
+backend_test_1  | npm ERR! code 1
+backend_test_1  | npm ERR! path /opt/app
+backend_test_1  | npm ERR! command failed
+backend_test_1  | npm ERR! command sh -c npx prettier --check 'src/**/*'
+backend_test_1  | 
+backend_test_1  | npm ERR! A complete log of this run can be found in:
+backend_test_1  | npm ERR!     /root/.npm/_logs/2021-02-08T22_35_41_307Z-debug.log
+backend_1       | App listening on port 9000
+backend_test_1  | npm ERR! code 1
+backend_test_1  | npm ERR! path /opt/app
+backend_test_1  | npm ERR! command failed
+backend_test_1  | npm ERR! command sh -c npm run lint:prettier
+backend_test_1  | 
+backend_test_1  | npm ERR! A complete log of this run can be found in:
+backend_test_1  | npm ERR!     /root/.npm/_logs/2021-02-08T22_35_41_376Z-debug.log
+backend_test_1  | [nodemon] app crashed - waiting for file changes before starting...
+db_1            | Warning: Unable to load '/usr/share/zoneinfo/iso3166.tab' as time zone. Skipping it.
+db_1            | Warning: Unable to load '/usr/share/zoneinfo/leap-seconds.list' as time zone. Skipping it.
+backend_1       | Error occurred: Error: connect ECONNREFUSED 172.21.0.3:3306
+backend_1       |     at Object.createConnection (/opt/app/node_modules/mysql2/promise.js:241:31)
+backend_1       |     at _callee$ (/opt/app/src/index.js:29:30)
+backend_1       |     at tryCatch (/opt/app/node_modules/regenerator-runtime/runtime.js:65:40)
+backend_1       |     at Generator.invoke [as _invoke] (/opt/app/node_modules/regenerator-runtime/runtime.js:303:22)
+backend_1       |     at Generator.prototype.<computed> [as next] (/opt/app/node_modules/regenerator-runtime/runtime.js:117:21)
+backend_1       |     at step (/opt/app/src/index.js:21:191)
+backend_1       |     at /opt/app/src/index.js:21:437
+backend_1       |     at new Promise (<anonymous>)
+backend_1       |     at /opt/app/src/index.js:21:99
+backend_1       |     at /opt/app/src/index.js:27:1 {
+backend_1       |   code: 'ECONNREFUSED',
+backend_1       |   errno: -111,
+backend_1       |   sqlState: undefined
+backend_1       | }
+backend_1       | 
+backend_1       |   Error: connect ECONNREFUSED 172.21.0.3:3306
+backend_1       |       at Object.createConnection (/opt/app/node_modules/mysql2/promise.js:241:31)
+backend_1       |       at _callee$ (/opt/app/src/index.js:29:30)
+backend_1       |       at tryCatch (/opt/app/node_modules/regenerator-runtime/runtime.js:65:40)
+backend_1       |       at Generator.invoke [as _invoke] (/opt/app/node_modules/regenerator-runtime/runtime.js:303:22)
+backend_1       |       at Generator.prototype.<computed> [as next] (/opt/app/node_modules/regenerator-runtime/runtime.js:117:21)
+backend_1       |       at step (/opt/app/src/index.js:21:191)
+backend_1       |       at /opt/app/src/index.js:21:437
+backend_1       |       at new Promise (<anonymous>)
+backend_1       |       at /opt/app/src/index.js:21:99
+backend_1       |       at /opt/app/src/index.js:27:1
+backend_1       | 
+db_1            | Warning: Unable to load '/usr/share/zoneinfo/zone.tab' as time zone. Skipping it.
+db_1            | 2021-02-08T22:35:43.569118Z 9 [Warning] 'user' entry 'mysql.session@localhost' ignored in --skip-name-resolve mode.
+db_1            | 2021-02-08T22:35:43.569157Z 9 [Warning] 'user' entry 'mysql.sys@localhost' ignored in --skip-name-resolve mode.
+db_1            | 2021-02-08T22:35:43.569167Z 9 [Warning] 'user' entry 'root@localhost' ignored in --skip-name-resolve mode.
+db_1            | 2021-02-08T22:35:43.569183Z 9 [Warning] 'db' entry 'performance_schema mysql.session@localhost' ignored in --skip-name-resolve mode.
+db_1            | 2021-02-08T22:35:43.569189Z 9 [Warning] 'db' entry 'sys mysql.sys@localhost' ignored in --skip-name-resolve mode.
+db_1            | 2021-02-08T22:35:43.569200Z 9 [Warning] 'proxies_priv' entry '@ root@localhost' ignored in --skip-name-resolve mode.
+db_1            | 2021-02-08T22:35:43.569343Z 9 [Warning] 'tables_priv' entry 'user mysql.session@localhost' ignored in --skip-name-resolve mode.
+db_1            | 2021-02-08T22:35:43.569354Z 9 [Warning] 'tables_priv' entry 'sys_config mysql.sys@localhost' ignored in --skip-name-resolve mode.
+db_1            | mysql: [Warning] Using a password on the command line interface can be insecure.
+db_1            | 
+db_1            | 2021-02-08T22:35:43.581610Z 0 [Note] Giving 1 client threads a chance to die gracefully
+db_1            | 2021-02-08T22:35:43.581663Z 0 [Note] Shutting down slave threads
+db_1            | 2021-02-08T22:35:43.581671Z 0 [Note] Event Scheduler: Killing the scheduler thread, thread id 4
+db_1            | 2021-02-08T22:35:43.581676Z 0 [Note] Event Scheduler: Waiting for the scheduler thread to reply
+db_1            | 2021-02-08T22:35:43.581781Z 0 [Note] Event Scheduler: Stopped
+db_1            | 2021-02-08T22:35:43.581790Z 0 [Note] Forcefully disconnecting 0 remaining clients
+db_1            | 2021-02-08T22:35:43.581795Z 0 [Note] Event Scheduler: Purging the queue. 0 events
+db_1            | 2021-02-08T22:35:43.581950Z 0 [Note] InnoDB: FTS optimize thread exiting.
+db_1            | 2021-02-08T22:35:43.685547Z 0 [Note] Binlog end
+db_1            | 2021-02-08T22:35:43.687669Z 0 [Note] Shutting down plugin 'ngram'
+db_1            | 2021-02-08T22:35:43.687708Z 0 [Note] Shutting down plugin 'BLACKHOLE'
+db_1            | 2021-02-08T22:35:43.687714Z 0 [Note] Shutting down plugin 'ARCHIVE'
+db_1            | 2021-02-08T22:35:43.687717Z 0 [Note] Shutting down plugin 'INNODB_CACHED_INDEXES'
+db_1            | 2021-02-08T22:35:43.687720Z 0 [Note] Shutting down plugin 'INNODB_VIRTUAL'
+db_1            | 2021-02-08T22:35:43.687722Z 0 [Note] Shutting down plugin 'INNODB_COLUMNS'
+db_1            | 2021-02-08T22:35:43.687724Z 0 [Note] Shutting down plugin 'INNODB_TABLESPACES'
+db_1            | 2021-02-08T22:35:43.687726Z 0 [Note] Shutting down plugin 'INNODB_INDEXES'
+db_1            | 2021-02-08T22:35:43.687729Z 0 [Note] Shutting down plugin 'INNODB_TABLESTATS'
+db_1            | 2021-02-08T22:35:43.687731Z 0 [Note] Shutting down plugin 'INNODB_TABLES'
+db_1            | 2021-02-08T22:35:43.687733Z 0 [Note] Shutting down plugin 'INNODB_FT_INDEX_TABLE'
+db_1            | 2021-02-08T22:35:43.687735Z 0 [Note] Shutting down plugin 'INNODB_FT_INDEX_CACHE'
+db_1            | 2021-02-08T22:35:43.687737Z 0 [Note] Shutting down plugin 'INNODB_FT_CONFIG'
+db_1            | 2021-02-08T22:35:43.687739Z 0 [Note] Shutting down plugin 'INNODB_FT_BEING_DELETED'
+db_1            | 2021-02-08T22:35:43.687742Z 0 [Note] Shutting down plugin 'INNODB_FT_DELETED'
+db_1            | 2021-02-08T22:35:43.687744Z 0 [Note] Shutting down plugin 'INNODB_FT_DEFAULT_STOPWORD'
+db_1            | 2021-02-08T22:35:43.687746Z 0 [Note] Shutting down plugin 'INNODB_METRICS'
+db_1            | 2021-02-08T22:35:43.687758Z 0 [Note] Shutting down plugin 'INNODB_TEMP_TABLE_INFO'
+db_1            | 2021-02-08T22:35:43.687760Z 0 [Note] Shutting down plugin 'INNODB_BUFFER_POOL_STATS'
+db_1            | 2021-02-08T22:35:43.687762Z 0 [Note] Shutting down plugin 'INNODB_BUFFER_PAGE_LRU'
+db_1            | 2021-02-08T22:35:43.687764Z 0 [Note] Shutting down plugin 'INNODB_BUFFER_PAGE'
+db_1            | 2021-02-08T22:35:43.687767Z 0 [Note] Shutting down plugin 'INNODB_CMP_PER_INDEX_RESET'
+db_1            | 2021-02-08T22:35:43.687769Z 0 [Note] Shutting down plugin 'INNODB_CMP_PER_INDEX'
+db_1            | 2021-02-08T22:35:43.687771Z 0 [Note] Shutting down plugin 'INNODB_CMPMEM_RESET'
+db_1            | 2021-02-08T22:35:43.687774Z 0 [Note] Shutting down plugin 'INNODB_CMPMEM'
+db_1            | 2021-02-08T22:35:43.687776Z 0 [Note] Shutting down plugin 'INNODB_CMP_RESET'
+db_1            | 2021-02-08T22:35:43.687779Z 0 [Note] Shutting down plugin 'INNODB_CMP'
+db_1            | 2021-02-08T22:35:43.687781Z 0 [Note] Shutting down plugin 'INNODB_TRX'
+db_1            | 2021-02-08T22:35:43.687783Z 0 [Note] Shutting down plugin 'InnoDB'
+db_1            | 2021-02-08T22:35:43.688121Z 0 [Note] InnoDB: Starting shutdown...
+db_1            | 2021-02-08T22:35:43.789647Z 0 [Note] InnoDB: Dumping buffer pool(s) to /var/lib/mysql/ib_buffer_pool
+db_1            | 2021-02-08T22:35:43.790446Z 0 [Note] InnoDB: Buffer pool(s) dump completed at 210208 22:35:43
+db_1            | 2021-02-08T22:35:45.020092Z 0 [Note] InnoDB: Shutdown completed; log sequence number 26008860
+db_1            | 2021-02-08T22:35:45.023465Z 0 [Note] InnoDB: Removed temporary tablespace data file: "ibtmp1"
+db_1            | 2021-02-08T22:35:45.023561Z 0 [Note] Shutting down plugin 'MRG_MYISAM'
+db_1            | 2021-02-08T22:35:45.023578Z 0 [Note] Shutting down plugin 'MyISAM'
+db_1            | 2021-02-08T22:35:45.023601Z 0 [Note] Shutting down plugin 'CSV'
+db_1            | 2021-02-08T22:35:45.023612Z 0 [Note] Shutting down plugin 'MEMORY'
+db_1            | 2021-02-08T22:35:45.023621Z 0 [Note] Shutting down plugin 'PERFORMANCE_SCHEMA'
+db_1            | 2021-02-08T22:35:45.023686Z 0 [Note] Shutting down plugin 'TempTable'
+db_1            | 2021-02-08T22:35:45.023717Z 0 [Note] Shutting down plugin 'sha2_cache_cleaner'
+db_1            | 2021-02-08T22:35:45.023728Z 0 [Note] Shutting down plugin 'caching_sha2_password'
+db_1            | 2021-02-08T22:35:45.023938Z 0 [Note] Shutting down plugin 'sha256_password'
+db_1            | 2021-02-08T22:35:45.023980Z 0 [Note] Shutting down plugin 'mysql_native_password'
+db_1            | 2021-02-08T22:35:45.024110Z 0 [Note] Shutting down plugin 'binlog'
+db_1            | 2021-02-08T22:35:45.027564Z 0 [Note] /usr/sbin/mysqld: Shutdown complete
+db_1            | 
+db_1            | 
+db_1            | MySQL init process done. Ready for start up.
+db_1            | 
+db_1            | 2021-02-08T22:35:45.289472Z 0 [Note] Basedir set to /usr/
+db_1            | 2021-02-08T22:35:45.289602Z 0 [Warning] The syntax '--symbolic-links/-s' is deprecated and will be removed in a future release
+db_1            | 2021-02-08T22:35:45.289646Z 0 [Note] --secure-file-priv is set to NULL. Operations related to importing and exporting data are disabled
+db_1            | 2021-02-08T22:35:45.289667Z 0 [Note] /usr/sbin/mysqld (mysqld 8.0.3-rc-log) starting as process 1 ...
+db_1            | 2021-02-08T22:35:45.291525Z 0 [Warning] No argument was provided to --log-bin, and --log-bin-index was not used; so replication may break when this MySQL server acts as a master and has his hostname changed!! Please use '--log-bin=aeface466db8-bin' to avoid this problem.
+db_1            | 2021-02-08T22:35:45.293113Z 0 [Note] InnoDB: Using Linux native AIO
+db_1            | 2021-02-08T22:35:45.293954Z 0 [Note] Plugin 'FEDERATED' is disabled.
+db_1            | 2021-02-08T22:35:45.295974Z 1 [Note] InnoDB: PUNCH HOLE support available
+db_1            | 2021-02-08T22:35:45.296144Z 1 [Note] InnoDB: Mutexes and rw_locks use GCC atomic builtins
+db_1            | 2021-02-08T22:35:45.296297Z 1 [Note] InnoDB: Uses event mutexes
+db_1            | 2021-02-08T22:35:45.296373Z 1 [Note] InnoDB: GCC builtin __atomic_thread_fence() is used for memory barrier
+db_1            | 2021-02-08T22:35:45.296533Z 1 [Note] InnoDB: Compressed tables use zlib 1.2.11
+db_1            | 2021-02-08T22:35:45.296944Z 1 [Note] InnoDB: Number of pools: 1
+db_1            | 2021-02-08T22:35:45.297179Z 1 [Note] InnoDB: Using CPU crc32 instructions
+db_1            | 2021-02-08T22:35:45.298447Z 1 [Note] InnoDB: Initializing buffer pool, total size = 128M, instances = 1, chunk size = 128M
+db_1            | libnuma: Warning: /sys not mounted or invalid. Assuming one node: No such file or directory
+db_1            | mbind: Operation not permitted
+db_1            | mbind: Operation not permitted
+db_1            | 2021-02-08T22:35:45.306873Z 1 [Note] InnoDB: Completed initialization of buffer pool
+db_1            | 2021-02-08T22:35:45.308738Z 0 [Note] InnoDB: If the mysqld execution user is authorized, page cleaner thread priority can be changed. See the man page of setpriority().
+db_1            | 2021-02-08T22:35:45.320306Z 1 [Note] InnoDB: Using 'tablespaces.open.2' max LSN: 15055818
+db_1            | 2021-02-08T22:35:45.324083Z 1 [Note] InnoDB: Applying a batch of 0 redo log records ...
+db_1            | 2021-02-08T22:35:45.324312Z 1 [Note] InnoDB: Apply batch completed!
+db_1            | 2021-02-08T22:35:45.325391Z 1 [Note] InnoDB: Opened 2 existing undo tablespaces.
+db_1            | 2021-02-08T22:35:45.334071Z 1 [Note] InnoDB: Creating shared tablespace for temporary tables
+db_1            | 2021-02-08T22:35:45.334208Z 1 [Note] InnoDB: Setting file './ibtmp1' size to 12 MB. Physically writing the file full; Please wait ...
+db_1            | 2021-02-08T22:35:45.510495Z 1 [Note] InnoDB: File './ibtmp1' size is now 12 MB.
+db_1            | 2021-02-08T22:35:45.513415Z 1 [Note] InnoDB: Created 128 and tracked 128 new rollback segment(s) in the temporary tablespace. 128 are now active.
+db_1            | 2021-02-08T22:35:45.513790Z 1 [Note] InnoDB: 8.0.3 started; log sequence number 26008860
+db_1            | 2021-02-08T22:35:45.556142Z 0 [Note] InnoDB: Loading buffer pool(s) from /var/lib/mysql/ib_buffer_pool
+db_1            | 2021-02-08T22:35:45.565545Z 1 [Note] Found data dictionary with version 1
+db_1            | 2021-02-08T22:35:45.579736Z 0 [Note] InnoDB: DDL log recovery : begin
+db_1            | 2021-02-08T22:35:45.580056Z 0 [Note] InnoDB: DDL log recovery : end
+db_1            | 2021-02-08T22:35:45.580210Z 0 [Note] InnoDB: Waiting for purge to start
+db_1            | 2021-02-08T22:35:45.633175Z 0 [Warning] You have not provided a mandatory server-id. Servers in a replication topology must have unique server-ids. Please refer to the proper server start-up parameters documentation.
+db_1            | 2021-02-08T22:35:45.647761Z 0 [Note] Found ca.pem, server-cert.pem and server-key.pem in data directory. Trying to enable SSL support using them.
+db_1            | 2021-02-08T22:35:45.648437Z 0 [Warning] CA certificate ca.pem is self signed.
+db_1            | 2021-02-08T22:35:45.650364Z 0 [Note] Server hostname (bind-address): '*'; port: 3306
+db_1            | 2021-02-08T22:35:45.650476Z 0 [Note] IPv6 is available.
+db_1            | 2021-02-08T22:35:45.650505Z 0 [Note]   - '::' resolves to '::';
+db_1            | 2021-02-08T22:35:45.650741Z 0 [Note] Server socket created on IP: '::'.
+db_1            | 2021-02-08T22:35:45.660846Z 0 [Warning] 'user' entry 'mysql.session@localhost' ignored in --skip-name-resolve mode.
+db_1            | 2021-02-08T22:35:45.661228Z 0 [Warning] 'user' entry 'mysql.sys@localhost' ignored in --skip-name-resolve mode.
+db_1            | 2021-02-08T22:35:45.661452Z 0 [Warning] 'user' entry 'root@localhost' ignored in --skip-name-resolve mode.
+db_1            | 2021-02-08T22:35:45.661537Z 0 [Warning] 'db' entry 'performance_schema mysql.session@localhost' ignored in --skip-name-resolve mode.
+db_1            | 2021-02-08T22:35:45.661596Z 0 [Warning] 'db' entry 'sys mysql.sys@localhost' ignored in --skip-name-resolve mode.
+db_1            | 2021-02-08T22:35:45.661824Z 0 [Warning] 'proxies_priv' entry '@ root@localhost' ignored in --skip-name-resolve mode.
+db_1            | 2021-02-08T22:35:45.665639Z 0 [Warning] 'tables_priv' entry 'user mysql.session@localhost' ignored in --skip-name-resolve mode.
+db_1            | 2021-02-08T22:35:45.665732Z 0 [Warning] 'tables_priv' entry 'sys_config mysql.sys@localhost' ignored in --skip-name-resolve mode.
+db_1            | 2021-02-08T22:35:45.671139Z 4 [Note] Event Scheduler: scheduler thread started with id 4
+db_1            | 2021-02-08T22:35:45.671305Z 0 [Note] /usr/sbin/mysqld: ready for connections. Version: '8.0.3-rc-log'  socket: '/var/run/mysqld/mysqld.sock'  port: 3306  MySQL Community Server (GPL)
+db_1            | 2021-02-08T22:35:46.559429Z 0 [Note] InnoDB: Buffer pool(s) load completed at 210208 22:35:46
+backend_1       | Error occurred: Error: Table 'tietokanta.test_table' doesn't exist
+backend_1       |     at PromiseConnection.execute (/opt/app/node_modules/mysql2/promise.js:110:22)
+backend_1       |     at _callee$ (/opt/app/src/index.js:30:31)
+backend_1       |     at tryCatch (/opt/app/node_modules/regenerator-runtime/runtime.js:65:40)
+backend_1       |     at Generator.invoke [as _invoke] (/opt/app/node_modules/regenerator-runtime/runtime.js:303:22)
+backend_1       |     at Generator.prototype.<computed> [as next] (/opt/app/node_modules/regenerator-runtime/runtime.js:117:21)
+backend_1       |     at step (/opt/app/src/index.js:21:191)
+backend_1       |     at /opt/app/src/index.js:21:361
+backend_1       |     at processTicksAndRejections (node:internal/process/task_queues:94:5) {
+backend_1       |   code: 'ER_NO_SUCH_TABLE',
+backend_1       |   errno: 1146,
+backend_1       |   sqlState: '42S02',
+backend_1       |   sqlMessage: "Table 'tietokanta.test_table' doesn't exist"
+backend_1       | }
+backend_1       | 
+backend_1       |   Error: Table 'tietokanta.test_table' doesn't exist
+backend_1       |       at PromiseConnection.execute (/opt/app/node_modules/mysql2/promise.js:110:22)
+backend_1       |       at _callee$ (/opt/app/src/index.js:30:31)
+backend_1       |       at tryCatch (/opt/app/node_modules/regenerator-runtime/runtime.js:65:40)
+backend_1       |       at Generator.invoke [as _invoke] (/opt/app/node_modules/regenerator-runtime/runtime.js:303:22)
+backend_1       |       at Generator.prototype.<computed> [as next] (/opt/app/node_modules/regenerator-runtime/runtime.js:117:21)
+backend_1       |       at step (/opt/app/src/index.js:21:191)
+backend_1       |       at /opt/app/src/index.js:21:361
+backend_1       |       at processTicksAndRejections (node:internal/process/task_queues:94:5)
+backend_1       | 
+mywebsql_1      | Begin shutting down runit services...
+backend_test_1  | npm ERR! code 143
+backend_test_1  | npm ERR! path /opt/app
+backend_test_1  | npm ERR! command failed
+backend_test_1  | npm ERR! command sh -c nodemon -w src --exec 'npm test'
+db_1            | 2021-02-08T22:36:30.292453Z 0 [Note] Giving 2 client threads a chance to die gracefully
+db_1            | 2021-02-08T22:36:30.292494Z 0 [Note] Shutting down slave threads
+db_1            | 2021-02-08T22:36:30.292502Z 0 [Note] Event Scheduler: Killing the scheduler thread, thread id 4
+db_1            | 2021-02-08T22:36:30.292507Z 0 [Note] Event Scheduler: Waiting for the scheduler thread to reply
+db_1            | 2021-02-08T22:36:30.292875Z 0 [Note] Event Scheduler: Stopped
+backend_test_1  | 
+backend_test_1  | npm ERR! A complete log of this run can be found in:
+backend_test_1  | npm ERR!     /root/.npm/_logs/2021-02-08T22_36_30_290Z-debug.log
+backend_1       | npm ERR! code 143
+backend_1       | npm ERR! path /opt/app
+backend_1       | npm ERR! command failed
+backend_1       | npm ERR! command sh -c nodemon src/index.js -w src --exec babel-node
+backend_1       | 
+backend_1       | npm ERR! A complete log of this run can be found in:
+backend_1       | npm ERR!     /root/.npm/_logs/2021-02-08T22_36_30_339Z-debug.log
+weather-app_mywebsql_1 exited with code 0
+weather-app_backend_test_1 exited with code 143
+weather-app_backend_1 exited with code 143
+db_1            | 2021-02-08T22:36:32.294253Z 0 [Note] Forcefully disconnecting 0 remaining clients
+db_1            | 2021-02-08T22:36:32.294301Z 0 [Note] Event Scheduler: Purging the queue. 0 events
+db_1            | 2021-02-08T22:36:32.294465Z 0 [Note] InnoDB: FTS optimize thread exiting.
+db_1            | 2021-02-08T22:36:32.395646Z 0 [Note] Binlog end
+db_1            | 2021-02-08T22:36:32.397255Z 0 [Note] Shutting down plugin 'ngram'
+db_1            | 2021-02-08T22:36:32.397286Z 0 [Note] Shutting down plugin 'BLACKHOLE'
+db_1            | 2021-02-08T22:36:32.397292Z 0 [Note] Shutting down plugin 'ARCHIVE'
+db_1            | 2021-02-08T22:36:32.397294Z 0 [Note] Shutting down plugin 'INNODB_CACHED_INDEXES'
+db_1            | 2021-02-08T22:36:32.397297Z 0 [Note] Shutting down plugin 'INNODB_VIRTUAL'
+db_1            | 2021-02-08T22:36:32.397300Z 0 [Note] Shutting down plugin 'INNODB_COLUMNS'
+db_1            | 2021-02-08T22:36:32.397302Z 0 [Note] Shutting down plugin 'INNODB_TABLESPACES'
+db_1            | 2021-02-08T22:36:32.397304Z 0 [Note] Shutting down plugin 'INNODB_INDEXES'
+db_1            | 2021-02-08T22:36:32.397306Z 0 [Note] Shutting down plugin 'INNODB_TABLESTATS'
+db_1            | 2021-02-08T22:36:32.397308Z 0 [Note] Shutting down plugin 'INNODB_TABLES'
+db_1            | 2021-02-08T22:36:32.397311Z 0 [Note] Shutting down plugin 'INNODB_FT_INDEX_TABLE'
+db_1            | 2021-02-08T22:36:32.397313Z 0 [Note] Shutting down plugin 'INNODB_FT_INDEX_CACHE'
+db_1            | 2021-02-08T22:36:32.397315Z 0 [Note] Shutting down plugin 'INNODB_FT_CONFIG'
+db_1            | 2021-02-08T22:36:32.397317Z 0 [Note] Shutting down plugin 'INNODB_FT_BEING_DELETED'
+db_1            | 2021-02-08T22:36:32.397319Z 0 [Note] Shutting down plugin 'INNODB_FT_DELETED'
+db_1            | 2021-02-08T22:36:32.397322Z 0 [Note] Shutting down plugin 'INNODB_FT_DEFAULT_STOPWORD'
+db_1            | 2021-02-08T22:36:32.397334Z 0 [Note] Shutting down plugin 'INNODB_METRICS'
+db_1            | 2021-02-08T22:36:32.397336Z 0 [Note] Shutting down plugin 'INNODB_TEMP_TABLE_INFO'
+db_1            | 2021-02-08T22:36:32.397338Z 0 [Note] Shutting down plugin 'INNODB_BUFFER_POOL_STATS'
+db_1            | 2021-02-08T22:36:32.397340Z 0 [Note] Shutting down plugin 'INNODB_BUFFER_PAGE_LRU'
+db_1            | 2021-02-08T22:36:32.397342Z 0 [Note] Shutting down plugin 'INNODB_BUFFER_PAGE'
+db_1            | 2021-02-08T22:36:32.397345Z 0 [Note] Shutting down plugin 'INNODB_CMP_PER_INDEX_RESET'
+db_1            | 2021-02-08T22:36:32.397347Z 0 [Note] Shutting down plugin 'INNODB_CMP_PER_INDEX'
+db_1            | 2021-02-08T22:36:32.397349Z 0 [Note] Shutting down plugin 'INNODB_CMPMEM_RESET'
+db_1            | 2021-02-08T22:36:32.397352Z 0 [Note] Shutting down plugin 'INNODB_CMPMEM'
+db_1            | 2021-02-08T22:36:32.397354Z 0 [Note] Shutting down plugin 'INNODB_CMP_RESET'
+db_1            | 2021-02-08T22:36:32.397356Z 0 [Note] Shutting down plugin 'INNODB_CMP'
+db_1            | 2021-02-08T22:36:32.397367Z 0 [Note] Shutting down plugin 'INNODB_TRX'
+db_1            | 2021-02-08T22:36:32.397370Z 0 [Note] Shutting down plugin 'InnoDB'
+db_1            | 2021-02-08T22:36:32.397386Z 0 [Note] InnoDB: Starting shutdown...
+db_1            | 2021-02-08T22:36:32.498419Z 0 [Note] InnoDB: Dumping buffer pool(s) to /var/lib/mysql/ib_buffer_pool
+db_1            | 2021-02-08T22:36:32.498713Z 0 [Note] InnoDB: Buffer pool(s) dump completed at 210208 22:36:32
+db_1            | 2021-02-08T22:36:33.213929Z 0 [Note] InnoDB: Shutdown completed; log sequence number 26037394
+db_1            | 2021-02-08T22:36:33.216594Z 0 [Note] InnoDB: Removed temporary tablespace data file: "ibtmp1"
+db_1            | 2021-02-08T22:36:33.216669Z 0 [Note] Shutting down plugin 'MRG_MYISAM'
+db_1            | 2021-02-08T22:36:33.216677Z 0 [Note] Shutting down plugin 'MyISAM'
+db_1            | 2021-02-08T22:36:33.216707Z 0 [Note] Shutting down plugin 'CSV'
+db_1            | 2021-02-08T22:36:33.216712Z 0 [Note] Shutting down plugin 'MEMORY'
+db_1            | 2021-02-08T22:36:33.216715Z 0 [Note] Shutting down plugin 'PERFORMANCE_SCHEMA'
+db_1            | 2021-02-08T22:36:33.216750Z 0 [Note] Shutting down plugin 'TempTable'
+db_1            | 2021-02-08T22:36:33.216774Z 0 [Note] Shutting down plugin 'sha2_cache_cleaner'
+db_1            | 2021-02-08T22:36:33.216779Z 0 [Note] Shutting down plugin 'caching_sha2_password'
+db_1            | 2021-02-08T22:36:33.216784Z 0 [Note] Shutting down plugin 'sha256_password'
+db_1            | 2021-02-08T22:36:33.216787Z 0 [Note] Shutting down plugin 'mysql_native_password'
+db_1            | 2021-02-08T22:36:33.216954Z 0 [Note] Shutting down plugin 'binlog'
+db_1            | 2021-02-08T22:36:33.221716Z 0 [Note] /usr/sbin/mysqld: Shutdown complete
+db_1            | 
+weather-app_db_1 exited with code 0
+Hackintosh:weather-app valtteri$ docker-compose logs -f
+Attaching to weather-app_backend_1, weather-app_backend_test_1, weather-app_mywebsql_1, weather-app_db_1
+backend_test_1  | 
+backend_test_1  | > backend@1.0.0 test:watch
+backend_test_1  | > nodemon -w src --exec 'npm test'
+backend_test_1  | 
+backend_test_1  | [nodemon] 2.0.7
+backend_test_1  | [nodemon] to restart at any time, enter `rs`
+backend_test_1  | [nodemon] watching path(s): src/**/*
+backend_test_1  | [nodemon] watching extensions: js,mjs,json
+backend_test_1  | [nodemon] starting `npm test`
+db_1            | Initializing database
+db_1            | 2021-02-08T22:40:06.388810Z 0 [Note] Basedir set to /usr/
+db_1            | 2021-02-08T22:40:06.388963Z 0 [Warning] The syntax '--symbolic-links/-s' is deprecated and will be removed in a future release
+db_1            | 2021-02-08T22:40:06.393633Z 0 [Warning] You need to use --log-bin to make --log-slave-updates work.
+db_1            | libnuma: Warning: /sys not mounted or invalid. Assuming one node: No such file or directory
+db_1            | mbind: Operation not permitted
+db_1            | mbind: Operation not permitted
+db_1            | 2021-02-08T22:40:08.301560Z 0 [Warning] No existing UUID has been found, so we assume that this is the first time that this server has been started. Generating a new UUID: 988147dc-6a5e-11eb-803f-0242ac160002.
+db_1            | 2021-02-08T22:40:08.303132Z 0 [Warning] You have not provided a mandatory server-id. Servers in a replication topology must have unique server-ids. Please refer to the proper server start-up parameters documentation.
+db_1            | 2021-02-08T22:40:08.305257Z 0 [Warning] Gtid table is not ready to be used. Table 'mysql.gtid_executed' cannot be opened.
+db_1            | 2021-02-08T22:40:08.307339Z 5 [Warning] root@localhost is created with an empty password ! Please consider switching off the --initialize-insecure option.
+mywebsql_1      | Starting pre-service scritps in /etc/my_init.d
+mywebsql_1      | *** Running: /etc/my_init.d/startup.sh
+mywebsql_1      | starting rc.local scritps
+mywebsql_1      | Booting runit daemon...
+mywebsql_1      | Process runsvdir running with PID 129
+backend_1       | 
+backend_1       | > backend@1.0.0 dev
+backend_1       | > nodemon src/index.js -w src --exec babel-node
+backend_1       | 
+backend_1       | [nodemon] 2.0.7
+backend_1       | [nodemon] to restart at any time, enter `rs`
+backend_1       | [nodemon] watching path(s): src/**/*
+backend_1       | [nodemon] watching extensions: js,mjs,json
+backend_1       | [nodemon] starting `babel-node src/index.js`
+backend_test_1  | 
+backend_test_1  | > backend@1.0.0 test
+backend_test_1  | > npm run lint:prettier
+backend_test_1  | 
+backend_test_1  | 
+backend_test_1  | > backend@1.0.0 lint:prettier
+backend_test_1  | > npx prettier --check 'src/**/*'
+backend_test_1  | 
+db_1            | 2021-02-08T22:40:09.716940Z 5 [Warning] 'user' entry 'mysql.session@localhost' ignored in --skip-name-resolve mode.
+db_1            | 2021-02-08T22:40:09.717127Z 5 [Warning] 'user' entry 'mysql.sys@localhost' ignored in --skip-name-resolve mode.
+db_1            | 2021-02-08T22:40:09.717145Z 5 [Warning] 'user' entry 'root@localhost' ignored in --skip-name-resolve mode.
+db_1            | 2021-02-08T22:40:09.717233Z 5 [Warning] 'db' entry 'performance_schema mysql.session@localhost' ignored in --skip-name-resolve mode.
+db_1            | 2021-02-08T22:40:09.717244Z 5 [Warning] 'db' entry 'sys mysql.sys@localhost' ignored in --skip-name-resolve mode.
+db_1            | 2021-02-08T22:40:09.717256Z 5 [Warning] 'proxies_priv' entry '@ root@localhost' ignored in --skip-name-resolve mode.
+db_1            | 2021-02-08T22:40:09.717711Z 5 [Warning] 'tables_priv' entry 'user mysql.session@localhost' ignored in --skip-name-resolve mode.
+db_1            | 2021-02-08T22:40:09.717752Z 5 [Warning] 'tables_priv' entry 'sys_config mysql.sys@localhost' ignored in --skip-name-resolve mode.
+db_1            | Database initialized
+db_1            | Initializing certificates
+db_1            | Generating a 2048 bit RSA private key
+db_1            | ......................+++
+db_1            | ....+++
+db_1            | unable to write 'random state'
+db_1            | writing new private key to 'ca-key.pem'
+db_1            | -----
+db_1            | Generating a 2048 bit RSA private key
+db_1            | ..+++
+db_1            | ....+++
+db_1            | unable to write 'random state'
+db_1            | writing new private key to 'server-key.pem'
+db_1            | -----
+db_1            | Generating a 2048 bit RSA private key
+db_1            | ...........+++
+db_1            | ......................................................................................................+++
+db_1            | unable to write 'random state'
+db_1            | writing new private key to 'client-key.pem'
+db_1            | -----
+db_1            | Certificates initialized
+db_1            | MySQL init process in progress...
+db_1            | 2021-02-08T22:40:13.881350Z 0 [Note] Basedir set to /usr/
+db_1            | 2021-02-08T22:40:13.885755Z 0 [Warning] The syntax '--symbolic-links/-s' is deprecated and will be removed in a future release
+db_1            | 2021-02-08T22:40:13.887280Z 0 [Note] --secure-file-priv is set to NULL. Operations related to importing and exporting data are disabled
+db_1            | 2021-02-08T22:40:13.887411Z 0 [Note] /usr/sbin/mysqld (mysqld 8.0.3-rc-log) starting as process 89 ...
+db_1            | 2021-02-08T22:40:13.904142Z 0 [Warning] No argument was provided to --log-bin, and --log-bin-index was not used; so replication may break when this MySQL server acts as a master and has his hostname changed!! Please use '--log-bin=4104645b7af4-bin' to avoid this problem.
+db_1            | 2021-02-08T22:40:13.926729Z 0 [Note] InnoDB: Using Linux native AIO
+db_1            | 2021-02-08T22:40:13.927470Z 0 [Note] Plugin 'FEDERATED' is disabled.
+db_1            | 2021-02-08T22:40:13.938612Z 1 [Note] InnoDB: PUNCH HOLE support available
+db_1            | 2021-02-08T22:40:13.938779Z 1 [Note] InnoDB: Mutexes and rw_locks use GCC atomic builtins
+db_1            | 2021-02-08T22:40:13.938808Z 1 [Note] InnoDB: Uses event mutexes
+db_1            | 2021-02-08T22:40:13.938832Z 1 [Note] InnoDB: GCC builtin __atomic_thread_fence() is used for memory barrier
+db_1            | 2021-02-08T22:40:13.938843Z 1 [Note] InnoDB: Compressed tables use zlib 1.2.11
+db_1            | 2021-02-08T22:40:13.939419Z 1 [Note] InnoDB: Number of pools: 1
+db_1            | 2021-02-08T22:40:13.940112Z 1 [Note] InnoDB: Using CPU crc32 instructions
+db_1            | 2021-02-08T22:40:13.949037Z 1 [Note] InnoDB: Initializing buffer pool, total size = 128M, instances = 1, chunk size = 128M
+db_1            | libnuma: Warning: /sys not mounted or invalid. Assuming one node: No such file or directory
+db_1            | mbind: Operation not permitted
+db_1            | mbind: Operation not permitted
+db_1            | 2021-02-08T22:40:13.977115Z 1 [Note] InnoDB: Completed initialization of buffer pool
+db_1            | 2021-02-08T22:40:13.978627Z 0 [Note] InnoDB: If the mysqld execution user is authorized, page cleaner thread priority can be changed. See the man page of setpriority().
+db_1            | 2021-02-08T22:40:14.001749Z 1 [Note] InnoDB: Using 'tablespaces.open.1' max LSN: 13791292
+db_1            | 2021-02-08T22:40:14.006048Z 1 [Note] InnoDB: Applying a batch of 0 redo log records ...
+db_1            | 2021-02-08T22:40:14.006149Z 1 [Note] InnoDB: Apply batch completed!
+db_1            | 2021-02-08T22:40:14.007960Z 1 [Note] InnoDB: Opened 2 existing undo tablespaces.
+db_1            | 2021-02-08T22:40:14.036968Z 1 [Note] InnoDB: Creating shared tablespace for temporary tables
+db_1            | 2021-02-08T22:40:14.038110Z 1 [Note] InnoDB: Setting file './ibtmp1' size to 12 MB. Physically writing the file full; Please wait ...
+db_1            | 2021-02-08T22:40:14.106383Z 1 [Note] InnoDB: File './ibtmp1' size is now 12 MB.
+db_1            | 2021-02-08T22:40:14.109696Z 1 [Note] InnoDB: Created 128 and tracked 128 new rollback segment(s) in the temporary tablespace. 128 are now active.
+db_1            | 2021-02-08T22:40:14.110381Z 1 [Note] InnoDB: 8.0.3 started; log sequence number 15050945
+backend_test_1  | npm WARN exec The following package was not found and will be installed: prettier
+db_1            | 2021-02-08T22:40:14.281614Z 0 [Note] InnoDB: Loading buffer pool(s) from /var/lib/mysql/ib_buffer_pool
+db_1            | 2021-02-08T22:40:14.305194Z 0 [Note] InnoDB: Buffer pool(s) load completed at 210208 22:40:14
+db_1            | 2021-02-08T22:40:14.333290Z 1 [Note] Found data dictionary with version 1
+db_1            | 2021-02-08T22:40:14.392538Z 0 [Note] InnoDB: DDL log recovery : begin
+db_1            | 2021-02-08T22:40:14.392605Z 0 [Note] InnoDB: DDL log recovery : end
+db_1            | 2021-02-08T22:40:14.393430Z 0 [Note] InnoDB: Waiting for purge to start
+db_1            | 2021-02-08T22:40:14.447782Z 0 [Warning] You have not provided a mandatory server-id. Servers in a replication topology must have unique server-ids. Please refer to the proper server start-up parameters documentation.
+db_1            | 2021-02-08T22:40:14.450321Z 0 [Note] Found ca.pem, server-cert.pem and server-key.pem in data directory. Trying to enable SSL support using them.
+db_1            | 2021-02-08T22:40:14.451027Z 0 [Warning] CA certificate ca.pem is self signed.
+db_1            | 2021-02-08T22:40:14.487572Z 0 [Warning] 'user' entry 'mysql.session@localhost' ignored in --skip-name-resolve mode.
+db_1            | 2021-02-08T22:40:14.487636Z 0 [Warning] 'user' entry 'mysql.sys@localhost' ignored in --skip-name-resolve mode.
+db_1            | 2021-02-08T22:40:14.487649Z 0 [Warning] 'user' entry 'root@localhost' ignored in --skip-name-resolve mode.
+db_1            | 2021-02-08T22:40:14.487672Z 0 [Warning] 'db' entry 'performance_schema mysql.session@localhost' ignored in --skip-name-resolve mode.
+db_1            | 2021-02-08T22:40:14.488549Z 0 [Warning] 'db' entry 'sys mysql.sys@localhost' ignored in --skip-name-resolve mode.
+db_1            | 2021-02-08T22:40:14.488625Z 0 [Warning] 'proxies_priv' entry '@ root@localhost' ignored in --skip-name-resolve mode.
+db_1            | 2021-02-08T22:40:14.498484Z 0 [Warning] 'tables_priv' entry 'user mysql.session@localhost' ignored in --skip-name-resolve mode.
+db_1            | 2021-02-08T22:40:14.498548Z 0 [Warning] 'tables_priv' entry 'sys_config mysql.sys@localhost' ignored in --skip-name-resolve mode.
+db_1            | 2021-02-08T22:40:14.509184Z 0 [Note] /usr/sbin/mysqld: ready for connections. Version: '8.0.3-rc-log'  socket: '/var/run/mysqld/mysqld.sock'  port: 0  MySQL Community Server (GPL)
+db_1            | 2021-02-08T22:40:14.509676Z 4 [Note] Event Scheduler: scheduler thread started with id 4
+backend_1       | App listening on port 9000
+db_1            | Warning: Unable to load '/usr/share/zoneinfo/iso3166.tab' as time zone. Skipping it.
+db_1            | Warning: Unable to load '/usr/share/zoneinfo/leap-seconds.list' as time zone. Skipping it.
+backend_test_1  | Checking formatting...
+backend_test_1  | [warn] src/index.js
+backend_test_1  | [warn] Code style issues found in the above file(s). Forgot to run Prettier?
+backend_test_1  | npm ERR! code 1
+backend_test_1  | npm ERR! path /opt/app
+backend_test_1  | npm ERR! command failed
+backend_test_1  | npm ERR! command sh -c prettier "--check" "src/**/*"
+backend_test_1  | 
+backend_test_1  | npm ERR! A complete log of this run can be found in:
+backend_test_1  | npm ERR!     /root/.npm/_logs/2021-02-08T22_40_16_628Z-debug.log
+backend_test_1  | npm ERR! code 1
+backend_test_1  | npm ERR! path /opt/app
+backend_test_1  | npm ERR! command failed
+backend_test_1  | npm ERR! command sh -c npx prettier --check 'src/**/*'
+backend_test_1  | 
+backend_test_1  | npm ERR! A complete log of this run can be found in:
+backend_test_1  | npm ERR!     /root/.npm/_logs/2021-02-08T22_40_16_673Z-debug.log
+backend_test_1  | npm ERR! code 1
+backend_test_1  | npm ERR! path /opt/app
+backend_test_1  | npm ERR! command failed
+backend_test_1  | npm ERR! command sh -c npm run lint:prettier
+backend_test_1  | 
+backend_test_1  | npm ERR! A complete log of this run can be found in:
+backend_test_1  | npm ERR!     /root/.npm/_logs/2021-02-08T22_40_16_701Z-debug.log
+backend_test_1  | [nodemon] app crashed - waiting for file changes before starting...
+db_1            | Warning: Unable to load '/usr/share/zoneinfo/zone.tab' as time zone. Skipping it.
+db_1            | 2021-02-08T22:40:18.302703Z 9 [Warning] 'user' entry 'mysql.session@localhost' ignored in --skip-name-resolve mode.
+db_1            | 2021-02-08T22:40:18.302880Z 9 [Warning] 'user' entry 'mysql.sys@localhost' ignored in --skip-name-resolve mode.
+db_1            | 2021-02-08T22:40:18.302917Z 9 [Warning] 'user' entry 'root@localhost' ignored in --skip-name-resolve mode.
+db_1            | 2021-02-08T22:40:18.303105Z 9 [Warning] 'db' entry 'performance_schema mysql.session@localhost' ignored in --skip-name-resolve mode.
+db_1            | 2021-02-08T22:40:18.303149Z 9 [Warning] 'db' entry 'sys mysql.sys@localhost' ignored in --skip-name-resolve mode.
+db_1            | 2021-02-08T22:40:18.303171Z 9 [Warning] 'proxies_priv' entry '@ root@localhost' ignored in --skip-name-resolve mode.
+db_1            | 2021-02-08T22:40:18.303360Z 9 [Warning] 'tables_priv' entry 'user mysql.session@localhost' ignored in --skip-name-resolve mode.
+db_1            | 2021-02-08T22:40:18.303393Z 9 [Warning] 'tables_priv' entry 'sys_config mysql.sys@localhost' ignored in --skip-name-resolve mode.
+db_1            | mysql: [Warning] Using a password on the command line interface can be insecure.
+db_1            | 
+db_1            | 2021-02-08T22:40:18.312834Z 0 [Note] Giving 1 client threads a chance to die gracefully
+db_1            | 2021-02-08T22:40:18.312913Z 0 [Note] Shutting down slave threads
+db_1            | 2021-02-08T22:40:18.312928Z 0 [Note] Event Scheduler: Killing the scheduler thread, thread id 4
+db_1            | 2021-02-08T22:40:18.312940Z 0 [Note] Event Scheduler: Waiting for the scheduler thread to reply
+db_1            | 2021-02-08T22:40:18.313434Z 0 [Note] Event Scheduler: Stopped
+db_1            | 2021-02-08T22:40:18.313502Z 0 [Note] Forcefully disconnecting 0 remaining clients
+db_1            | 2021-02-08T22:40:18.313518Z 0 [Note] Event Scheduler: Purging the queue. 0 events
+db_1            | 2021-02-08T22:40:18.313840Z 0 [Note] InnoDB: FTS optimize thread exiting.
+db_1            | 2021-02-08T22:40:18.415724Z 0 [Note] Binlog end
+db_1            | 2021-02-08T22:40:18.418548Z 0 [Note] Shutting down plugin 'ngram'
+db_1            | 2021-02-08T22:40:18.418616Z 0 [Note] Shutting down plugin 'BLACKHOLE'
+db_1            | 2021-02-08T22:40:18.418640Z 0 [Note] Shutting down plugin 'ARCHIVE'
+db_1            | 2021-02-08T22:40:18.418649Z 0 [Note] Shutting down plugin 'INNODB_CACHED_INDEXES'
+db_1            | 2021-02-08T22:40:18.418658Z 0 [Note] Shutting down plugin 'INNODB_VIRTUAL'
+db_1            | 2021-02-08T22:40:18.418675Z 0 [Note] Shutting down plugin 'INNODB_COLUMNS'
+db_1            | 2021-02-08T22:40:18.418692Z 0 [Note] Shutting down plugin 'INNODB_TABLESPACES'
+db_1            | 2021-02-08T22:40:18.418719Z 0 [Note] Shutting down plugin 'INNODB_INDEXES'
+db_1            | 2021-02-08T22:40:18.418728Z 0 [Note] Shutting down plugin 'INNODB_TABLESTATS'
+db_1            | 2021-02-08T22:40:18.418736Z 0 [Note] Shutting down plugin 'INNODB_TABLES'
+db_1            | 2021-02-08T22:40:18.418753Z 0 [Note] Shutting down plugin 'INNODB_FT_INDEX_TABLE'
+db_1            | 2021-02-08T22:40:18.418770Z 0 [Note] Shutting down plugin 'INNODB_FT_INDEX_CACHE'
+db_1            | 2021-02-08T22:40:18.418778Z 0 [Note] Shutting down plugin 'INNODB_FT_CONFIG'
+db_1            | 2021-02-08T22:40:18.419118Z 0 [Note] Shutting down plugin 'INNODB_FT_BEING_DELETED'
+db_1            | 2021-02-08T22:40:18.419140Z 0 [Note] Shutting down plugin 'INNODB_FT_DELETED'
+db_1            | 2021-02-08T22:40:18.419271Z 0 [Note] Shutting down plugin 'INNODB_FT_DEFAULT_STOPWORD'
+db_1            | 2021-02-08T22:40:18.419418Z 0 [Note] Shutting down plugin 'INNODB_METRICS'
+db_1            | 2021-02-08T22:40:18.419449Z 0 [Note] Shutting down plugin 'INNODB_TEMP_TABLE_INFO'
+db_1            | 2021-02-08T22:40:18.419510Z 0 [Note] Shutting down plugin 'INNODB_BUFFER_POOL_STATS'
+db_1            | 2021-02-08T22:40:18.419524Z 0 [Note] Shutting down plugin 'INNODB_BUFFER_PAGE_LRU'
+db_1            | 2021-02-08T22:40:18.419532Z 0 [Note] Shutting down plugin 'INNODB_BUFFER_PAGE'
+db_1            | 2021-02-08T22:40:18.419682Z 0 [Note] Shutting down plugin 'INNODB_CMP_PER_INDEX_RESET'
+db_1            | 2021-02-08T22:40:18.419860Z 0 [Note] Shutting down plugin 'INNODB_CMP_PER_INDEX'
+db_1            | 2021-02-08T22:40:18.419917Z 0 [Note] Shutting down plugin 'INNODB_CMPMEM_RESET'
+db_1            | 2021-02-08T22:40:18.419946Z 0 [Note] Shutting down plugin 'INNODB_CMPMEM'
+db_1            | 2021-02-08T22:40:18.419954Z 0 [Note] Shutting down plugin 'INNODB_CMP_RESET'
+db_1            | 2021-02-08T22:40:18.419963Z 0 [Note] Shutting down plugin 'INNODB_CMP'
+db_1            | 2021-02-08T22:40:18.420153Z 0 [Note] Shutting down plugin 'INNODB_TRX'
+db_1            | 2021-02-08T22:40:18.420180Z 0 [Note] Shutting down plugin 'InnoDB'
+db_1            | 2021-02-08T22:40:18.420341Z 0 [Note] InnoDB: Starting shutdown...
+db_1            | 2021-02-08T22:40:18.523220Z 0 [Note] InnoDB: Dumping buffer pool(s) to /var/lib/mysql/ib_buffer_pool
+db_1            | 2021-02-08T22:40:18.523637Z 0 [Note] InnoDB: Buffer pool(s) dump completed at 210208 22:40:18
+db_1            | 2021-02-08T22:40:19.750261Z 0 [Note] InnoDB: Shutdown completed; log sequence number 26009325
+db_1            | 2021-02-08T22:40:19.753428Z 0 [Note] InnoDB: Removed temporary tablespace data file: "ibtmp1"
+db_1            | 2021-02-08T22:40:19.753479Z 0 [Note] Shutting down plugin 'MRG_MYISAM'
+db_1            | 2021-02-08T22:40:19.753487Z 0 [Note] Shutting down plugin 'MyISAM'
+db_1            | 2021-02-08T22:40:19.753513Z 0 [Note] Shutting down plugin 'CSV'
+db_1            | 2021-02-08T22:40:19.753574Z 0 [Note] Shutting down plugin 'MEMORY'
+db_1            | 2021-02-08T22:40:19.753579Z 0 [Note] Shutting down plugin 'PERFORMANCE_SCHEMA'
+db_1            | 2021-02-08T22:40:19.753762Z 0 [Note] Shutting down plugin 'TempTable'
+db_1            | 2021-02-08T22:40:19.753788Z 0 [Note] Shutting down plugin 'sha2_cache_cleaner'
+db_1            | 2021-02-08T22:40:19.753792Z 0 [Note] Shutting down plugin 'caching_sha2_password'
+db_1            | 2021-02-08T22:40:19.753797Z 0 [Note] Shutting down plugin 'sha256_password'
+db_1            | 2021-02-08T22:40:19.753800Z 0 [Note] Shutting down plugin 'mysql_native_password'
+db_1            | 2021-02-08T22:40:19.754121Z 0 [Note] Shutting down plugin 'binlog'
+db_1            | 2021-02-08T22:40:19.757584Z 0 [Note] /usr/sbin/mysqld: Shutdown complete
+db_1            | 
+db_1            | 
+db_1            | MySQL init process done. Ready for start up.
+db_1            | 
+db_1            | 2021-02-08T22:40:20.004033Z 0 [Note] Basedir set to /usr/
+db_1            | 2021-02-08T22:40:20.004167Z 0 [Warning] The syntax '--symbolic-links/-s' is deprecated and will be removed in a future release
+db_1            | 2021-02-08T22:40:20.004270Z 0 [Note] --secure-file-priv is set to NULL. Operations related to importing and exporting data are disabled
+db_1            | 2021-02-08T22:40:20.004293Z 0 [Note] /usr/sbin/mysqld (mysqld 8.0.3-rc-log) starting as process 1 ...
+db_1            | 2021-02-08T22:40:20.006164Z 0 [Warning] No argument was provided to --log-bin, and --log-bin-index was not used; so replication may break when this MySQL server acts as a master and has his hostname changed!! Please use '--log-bin=4104645b7af4-bin' to avoid this problem.
+db_1            | 2021-02-08T22:40:20.008290Z 0 [Note] InnoDB: Using Linux native AIO
+db_1            | 2021-02-08T22:40:20.008601Z 0 [Note] Plugin 'FEDERATED' is disabled.
+db_1            | 2021-02-08T22:40:20.010589Z 1 [Note] InnoDB: PUNCH HOLE support available
+db_1            | 2021-02-08T22:40:20.010682Z 1 [Note] InnoDB: Mutexes and rw_locks use GCC atomic builtins
+db_1            | 2021-02-08T22:40:20.010695Z 1 [Note] InnoDB: Uses event mutexes
+db_1            | 2021-02-08T22:40:20.010713Z 1 [Note] InnoDB: GCC builtin __atomic_thread_fence() is used for memory barrier
+db_1            | 2021-02-08T22:40:20.010776Z 1 [Note] InnoDB: Compressed tables use zlib 1.2.11
+db_1            | 2021-02-08T22:40:20.011404Z 1 [Note] InnoDB: Number of pools: 1
+db_1            | 2021-02-08T22:40:20.011603Z 1 [Note] InnoDB: Using CPU crc32 instructions
+db_1            | 2021-02-08T22:40:20.013144Z 1 [Note] InnoDB: Initializing buffer pool, total size = 128M, instances = 1, chunk size = 128M
+db_1            | libnuma: Warning: /sys not mounted or invalid. Assuming one node: No such file or directory
+db_1            | mbind: Operation not permitted
+db_1            | mbind: Operation not permitted
+db_1            | 2021-02-08T22:40:20.021302Z 1 [Note] InnoDB: Completed initialization of buffer pool
+db_1            | 2021-02-08T22:40:20.023275Z 0 [Note] InnoDB: If the mysqld execution user is authorized, page cleaner thread priority can be changed. See the man page of setpriority().
+db_1            | 2021-02-08T22:40:20.035056Z 1 [Note] InnoDB: Using 'tablespaces.open.2' max LSN: 15050990
+db_1            | 2021-02-08T22:40:20.037429Z 1 [Note] InnoDB: Applying a batch of 0 redo log records ...
+db_1            | 2021-02-08T22:40:20.037549Z 1 [Note] InnoDB: Apply batch completed!
+db_1            | 2021-02-08T22:40:20.038498Z 1 [Note] InnoDB: Opened 2 existing undo tablespaces.
+db_1            | 2021-02-08T22:40:20.048818Z 1 [Note] InnoDB: Creating shared tablespace for temporary tables
+db_1            | 2021-02-08T22:40:20.049020Z 1 [Note] InnoDB: Setting file './ibtmp1' size to 12 MB. Physically writing the file full; Please wait ...
+db_1            | 2021-02-08T22:40:20.091087Z 1 [Note] InnoDB: File './ibtmp1' size is now 12 MB.
+db_1            | 2021-02-08T22:40:20.093423Z 1 [Note] InnoDB: Created 128 and tracked 128 new rollback segment(s) in the temporary tablespace. 128 are now active.
+db_1            | 2021-02-08T22:40:20.093634Z 1 [Note] InnoDB: 8.0.3 started; log sequence number 26009325
+db_1            | 2021-02-08T22:40:20.136352Z 0 [Note] InnoDB: Loading buffer pool(s) from /var/lib/mysql/ib_buffer_pool
+db_1            | 2021-02-08T22:40:20.146766Z 1 [Note] Found data dictionary with version 1
+db_1            | 2021-02-08T22:40:20.160516Z 0 [Note] InnoDB: DDL log recovery : begin
+db_1            | 2021-02-08T22:40:20.160610Z 0 [Note] InnoDB: DDL log recovery : end
+db_1            | 2021-02-08T22:40:20.161031Z 0 [Note] InnoDB: Waiting for purge to start
+db_1            | 2021-02-08T22:40:20.215221Z 0 [Warning] You have not provided a mandatory server-id. Servers in a replication topology must have unique server-ids. Please refer to the proper server start-up parameters documentation.
+db_1            | 2021-02-08T22:40:20.231029Z 0 [Note] Found ca.pem, server-cert.pem and server-key.pem in data directory. Trying to enable SSL support using them.
+db_1            | 2021-02-08T22:40:20.231735Z 0 [Warning] CA certificate ca.pem is self signed.
+db_1            | 2021-02-08T22:40:20.233601Z 0 [Note] Server hostname (bind-address): '*'; port: 3306
+db_1            | 2021-02-08T22:40:20.233707Z 0 [Note] IPv6 is available.
+db_1            | 2021-02-08T22:40:20.233717Z 0 [Note]   - '::' resolves to '::';
+db_1            | 2021-02-08T22:40:20.233930Z 0 [Note] Server socket created on IP: '::'.
+db_1            | 2021-02-08T22:40:20.243431Z 0 [Warning] 'user' entry 'mysql.session@localhost' ignored in --skip-name-resolve mode.
+db_1            | 2021-02-08T22:40:20.243475Z 0 [Warning] 'user' entry 'mysql.sys@localhost' ignored in --skip-name-resolve mode.
+db_1            | 2021-02-08T22:40:20.243484Z 0 [Warning] 'user' entry 'root@localhost' ignored in --skip-name-resolve mode.
+db_1            | 2021-02-08T22:40:20.243502Z 0 [Warning] 'db' entry 'performance_schema mysql.session@localhost' ignored in --skip-name-resolve mode.
+db_1            | 2021-02-08T22:40:20.243508Z 0 [Warning] 'db' entry 'sys mysql.sys@localhost' ignored in --skip-name-resolve mode.
+db_1            | 2021-02-08T22:40:20.243545Z 0 [Warning] 'proxies_priv' entry '@ root@localhost' ignored in --skip-name-resolve mode.
+db_1            | 2021-02-08T22:40:20.247405Z 0 [Warning] 'tables_priv' entry 'user mysql.session@localhost' ignored in --skip-name-resolve mode.
+db_1            | 2021-02-08T22:40:20.247490Z 0 [Warning] 'tables_priv' entry 'sys_config mysql.sys@localhost' ignored in --skip-name-resolve mode.
+db_1            | 2021-02-08T22:40:20.251964Z 4 [Note] Event Scheduler: scheduler thread started with id 4
+db_1            | 2021-02-08T22:40:20.252088Z 0 [Note] /usr/sbin/mysqld: ready for connections. Version: '8.0.3-rc-log'  socket: '/var/run/mysqld/mysqld.sock'  port: 3306  MySQL Community Server (GPL)
+db_1            | 2021-02-08T22:40:21.141306Z 0 [Note] InnoDB: Buffer pool(s) load completed at 210208 22:40:21
+backend_1       | Error occurred: Error: Table 'tietokanta.test_table' doesn't exist
+backend_1       |     at PromiseConnection.execute (/opt/app/node_modules/mysql2/promise.js:110:22)
+backend_1       |     at _callee$ (/opt/app/src/index.js:30:31)
+backend_1       |     at tryCatch (/opt/app/node_modules/regenerator-runtime/runtime.js:65:40)
+backend_1       |     at Generator.invoke [as _invoke] (/opt/app/node_modules/regenerator-runtime/runtime.js:303:22)
+backend_1       |     at Generator.prototype.<computed> [as next] (/opt/app/node_modules/regenerator-runtime/runtime.js:117:21)
+backend_1       |     at step (/opt/app/src/index.js:21:191)
+backend_1       |     at /opt/app/src/index.js:21:361
+backend_1       |     at processTicksAndRejections (node:internal/process/task_queues:94:5) {
+backend_1       |   code: 'ER_NO_SUCH_TABLE',
+backend_1       |   errno: 1146,
+backend_1       |   sqlState: '42S02',
+backend_1       |   sqlMessage: "Table 'tietokanta.test_table' doesn't exist"
+backend_1       | }
+backend_1       | 
+backend_1       |   Error: Table 'tietokanta.test_table' doesn't exist
+backend_1       |       at PromiseConnection.execute (/opt/app/node_modules/mysql2/promise.js:110:22)
+backend_1       |       at _callee$ (/opt/app/src/index.js:30:31)
+backend_1       |       at tryCatch (/opt/app/node_modules/regenerator-runtime/runtime.js:65:40)
+backend_1       |       at Generator.invoke [as _invoke] (/opt/app/node_modules/regenerator-runtime/runtime.js:303:22)
+backend_1       |       at Generator.prototype.<computed> [as next] (/opt/app/node_modules/regenerator-runtime/runtime.js:117:21)
+backend_1       |       at step (/opt/app/src/index.js:21:191)
+backend_1       |       at /opt/app/src/index.js:21:361
+backend_1       |       at processTicksAndRejections (node:internal/process/task_queues:94:5)
+backend_1       | 
+db_1            | mbind: Operation not permitted
+backend_1       | Data fetched: [ BinaryRow { id: 12, field_1: 'moikka', field_2: 23 } ]
+db_1            | mbind: Operation not permitted
+backend_1       | Data fetched: [ BinaryRow { id: 12, field_1: 'moikka', field_2: 23 } ]
+backend_1       | Data fetched: [ BinaryRow { id: 12, field_1: 'moikka', field_2: 23 } ]
+db_1            | 2021-02-08T22:47:14.596088Z 0 [Note] Giving 5 client threads a chance to die gracefully
+db_1            | 2021-02-08T22:47:14.596167Z 0 [Note] Shutting down slave threads
+db_1            | 2021-02-08T22:47:14.596174Z 0 [Note] Event Scheduler: Killing the scheduler thread, thread id 4
+db_1            | 2021-02-08T22:47:14.596178Z 0 [Note] Event Scheduler: Waiting for the scheduler thread to reply
+db_1            | 2021-02-08T22:47:14.599358Z 0 [Note] Event Scheduler: Stopped
+backend_test_1  | npm ERR! code 143
+backend_test_1  | npm ERR! path /opt/app
+backend_test_1  | npm ERR! command failed
+backend_test_1  | npm ERR! command sh -c nodemon -w src --exec 'npm test'
+mywebsql_1      | Begin shutting down runit services...
+backend_test_1  | 
+backend_test_1  | npm ERR! A complete log of this run can be found in:
+backend_test_1  | npm ERR!     /root/.npm/_logs/2021-02-08T22_47_14_613Z-debug.log
+backend_1       | npm ERR! code 143
+backend_1       | npm ERR! path /opt/app
+backend_1       | npm ERR! command failed
+backend_1       | npm ERR! command sh -c nodemon src/index.js -w src --exec babel-node
+backend_1       | 
+backend_1       | npm ERR! A complete log of this run can be found in:
+backend_1       | npm ERR!     /root/.npm/_logs/2021-02-08T22_47_14_703Z-debug.log
+weather-app_backend_test_1 exited with code 143
+weather-app_mywebsql_1 exited with code 0
+weather-app_backend_1 exited with code 143
+db_1            | 2021-02-08T22:47:16.601449Z 0 [Note] Forcefully disconnecting 0 remaining clients
+db_1            | 2021-02-08T22:47:16.601488Z 0 [Note] Event Scheduler: Purging the queue. 0 events
+db_1            | 2021-02-08T22:47:16.601639Z 0 [Note] InnoDB: FTS optimize thread exiting.
+db_1            | 2021-02-08T22:47:16.704640Z 0 [Note] Binlog end
+db_1            | 2021-02-08T22:47:16.709145Z 0 [Note] Shutting down plugin 'ngram'
+db_1            | 2021-02-08T22:47:16.709187Z 0 [Note] Shutting down plugin 'BLACKHOLE'
+db_1            | 2021-02-08T22:47:16.709193Z 0 [Note] Shutting down plugin 'ARCHIVE'
+db_1            | 2021-02-08T22:47:16.709197Z 0 [Note] Shutting down plugin 'INNODB_CACHED_INDEXES'
+db_1            | 2021-02-08T22:47:16.709200Z 0 [Note] Shutting down plugin 'INNODB_VIRTUAL'
+db_1            | 2021-02-08T22:47:16.709202Z 0 [Note] Shutting down plugin 'INNODB_COLUMNS'
+db_1            | 2021-02-08T22:47:16.709204Z 0 [Note] Shutting down plugin 'INNODB_TABLESPACES'
+db_1            | 2021-02-08T22:47:16.709207Z 0 [Note] Shutting down plugin 'INNODB_INDEXES'
+db_1            | 2021-02-08T22:47:16.709218Z 0 [Note] Shutting down plugin 'INNODB_TABLESTATS'
+db_1            | 2021-02-08T22:47:16.709221Z 0 [Note] Shutting down plugin 'INNODB_TABLES'
+db_1            | 2021-02-08T22:47:16.709223Z 0 [Note] Shutting down plugin 'INNODB_FT_INDEX_TABLE'
+db_1            | 2021-02-08T22:47:16.709225Z 0 [Note] Shutting down plugin 'INNODB_FT_INDEX_CACHE'
+db_1            | 2021-02-08T22:47:16.709237Z 0 [Note] Shutting down plugin 'INNODB_FT_CONFIG'
+db_1            | 2021-02-08T22:47:16.709240Z 0 [Note] Shutting down plugin 'INNODB_FT_BEING_DELETED'
+db_1            | 2021-02-08T22:47:16.709242Z 0 [Note] Shutting down plugin 'INNODB_FT_DELETED'
+db_1            | 2021-02-08T22:47:16.709244Z 0 [Note] Shutting down plugin 'INNODB_FT_DEFAULT_STOPWORD'
+db_1            | 2021-02-08T22:47:16.709250Z 0 [Note] Shutting down plugin 'INNODB_METRICS'
+db_1            | 2021-02-08T22:47:16.709252Z 0 [Note] Shutting down plugin 'INNODB_TEMP_TABLE_INFO'
+db_1            | 2021-02-08T22:47:16.709255Z 0 [Note] Shutting down plugin 'INNODB_BUFFER_POOL_STATS'
+db_1            | 2021-02-08T22:47:16.709257Z 0 [Note] Shutting down plugin 'INNODB_BUFFER_PAGE_LRU'
+db_1            | 2021-02-08T22:47:16.709260Z 0 [Note] Shutting down plugin 'INNODB_BUFFER_PAGE'
+db_1            | 2021-02-08T22:47:16.709262Z 0 [Note] Shutting down plugin 'INNODB_CMP_PER_INDEX_RESET'
+db_1            | 2021-02-08T22:47:16.709264Z 0 [Note] Shutting down plugin 'INNODB_CMP_PER_INDEX'
+db_1            | 2021-02-08T22:47:16.709267Z 0 [Note] Shutting down plugin 'INNODB_CMPMEM_RESET'
+db_1            | 2021-02-08T22:47:16.709269Z 0 [Note] Shutting down plugin 'INNODB_CMPMEM'
+db_1            | 2021-02-08T22:47:16.709271Z 0 [Note] Shutting down plugin 'INNODB_CMP_RESET'
+db_1            | 2021-02-08T22:47:16.709274Z 0 [Note] Shutting down plugin 'INNODB_CMP'
+db_1            | 2021-02-08T22:47:16.709276Z 0 [Note] Shutting down plugin 'INNODB_TRX'
+db_1            | 2021-02-08T22:47:16.709279Z 0 [Note] Shutting down plugin 'InnoDB'
+db_1            | 2021-02-08T22:47:16.709315Z 0 [Note] InnoDB: Starting shutdown...
+db_1            | 2021-02-08T22:47:16.810388Z 0 [Note] InnoDB: Dumping buffer pool(s) to /var/lib/mysql/ib_buffer_pool
+db_1            | 2021-02-08T22:47:16.810603Z 0 [Note] InnoDB: Buffer pool(s) dump completed at 210208 22:47:16
+db_1            | 2021-02-08T22:47:18.243194Z 0 [Note] InnoDB: Shutdown completed; log sequence number 26059280
+db_1            | 2021-02-08T22:47:18.246406Z 0 [Note] InnoDB: Removed temporary tablespace data file: "ibtmp1"
+db_1            | 2021-02-08T22:47:18.246588Z 0 [Note] Shutting down plugin 'MRG_MYISAM'
+db_1            | 2021-02-08T22:47:18.246636Z 0 [Note] Shutting down plugin 'MyISAM'
+db_1            | 2021-02-08T22:47:18.246697Z 0 [Note] Shutting down plugin 'CSV'
+db_1            | 2021-02-08T22:47:18.246709Z 0 [Note] Shutting down plugin 'MEMORY'
+db_1            | 2021-02-08T22:47:18.246717Z 0 [Note] Shutting down plugin 'PERFORMANCE_SCHEMA'
+db_1            | 2021-02-08T22:47:18.246761Z 0 [Note] Shutting down plugin 'TempTable'
+db_1            | 2021-02-08T22:47:18.246780Z 0 [Note] Shutting down plugin 'sha2_cache_cleaner'
+db_1            | 2021-02-08T22:47:18.246824Z 0 [Note] Shutting down plugin 'caching_sha2_password'
+db_1            | 2021-02-08T22:47:18.246836Z 0 [Note] Shutting down plugin 'sha256_password'
+db_1            | 2021-02-08T22:47:18.247047Z 0 [Note] Shutting down plugin 'mysql_native_password'
+db_1            | 2021-02-08T22:47:18.247380Z 0 [Note] Shutting down plugin 'binlog'
+db_1            | 2021-02-08T22:47:18.251471Z 0 [Note] /usr/sbin/mysqld: Shutdown complete
+db_1            | 
+weather-app_db_1 exited with code 0
+Hackintosh:weather-app valtteri$ 

@@ -1,0 +1,1 @@
+curl -i -X POST -H "Content-Type: application/json;charset=UTF-8" -d '{"device_id":"1", "data":{"temperature": "1", "wind_speed": "2", "wind_direction":"3", "pressure":"4", "humidity_in":"5", "humidity_out":"6", "light":"7","rain":"8"}}' "http://localhost:9000/api/v1/postdata"
