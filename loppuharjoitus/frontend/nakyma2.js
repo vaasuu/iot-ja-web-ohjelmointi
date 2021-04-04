@@ -20,7 +20,7 @@ const myAsyncFunction = async () => {
   let title_signal_name = document.getElementById("title_signal_name");
   table_header_signal_unit.textContent = " (" + units[SIGNAL_NAME] + ")";
   title_signal_name.textContent = prettifySignalNames(SIGNAL_NAME);
-  
+
   // get data from API
   const response = await fetch(
     `http://webapi19sa-1.course.tamk.cloud/v1/weather/${SIGNAL_NAME}`
@@ -56,6 +56,62 @@ const myAsyncFunction = async () => {
     // append row to table
     tableBody.appendChild(row);
   }
+  addChartThing(signals, SIGNAL_NAME);
+};
+
+const addChartThing = async (signals, SIGNAL_NAME) => {
+  console.log(signals);
+  console.log(typeof parseFloat(signals[0][SIGNAL_NAME]));
+
+  // Get the canvas element from HTML DOM
+  const canvasElement = document.getElementById("myChart");
+
+  // Initialize the Chartjs library
+  const myChart = new Chart(canvasElement, {
+    type: "line",
+    data: {
+      labels: signals.map((values) => values.date_time),
+      datasets: [
+        {
+          label:
+            prettifySignalNames(SIGNAL_NAME) + " (" + units[SIGNAL_NAME] + ")",
+          data: signals.map((values) =>
+            parseFloat(values[SIGNAL_NAME]).toFixed(2)
+          ),
+          backgroundColor: "rgba(0, 102, 255, 0.5)",
+          borderColor: "blue",
+          borderWidth: 2,
+          lineTension: 0,
+          pointRadius: 0,
+          pointHitRadius: 10,
+        },
+      ],
+    },
+    options: {
+      scales: {
+        xAxes: [
+          {
+            type: "time",
+            time: {
+              // check out https://date-fns.org/v2.19.0/docs/Locale
+              tooltipFormat: " dd.MM.y HH:mm:ss",
+              // tooltipFormat: 'dd.MM.y HH:mm:ss',
+              unit: "second",
+              unitStepSize: 1,
+              displayFormats: {
+                second: "HH:mm:ss",
+              },
+            },
+            ticks: {
+              fontColor: "#000",
+              maxTicksLimit: 20,
+              source: "auto",
+            },
+          },
+        ],
+      },
+    },
+  });
 };
 
 window.onload = function () {
