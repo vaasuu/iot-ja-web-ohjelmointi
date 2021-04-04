@@ -9,11 +9,19 @@ const prettifySignalNames = (uglySignalName) => {
   }
 };
 
+const getDataFromUrl = async (URL) => {
+  // get data from API
+  const response = await fetch(`${URL}`);
+  // console.log(response);
+
+  // get the json response
+  const signals = await response.json();
+  return signals;
+};
+
 const tableBody = document.getElementById("tablebody");
 
-const myAsyncFunction = async () => {
-  let SIGNAL_NAME = "temperature";
-
+const addTableFromData = async (SIGNAL_NAME, signals) => {
   let table_header_signal_unit = document.getElementById(
     "table_header_signal_unit"
   );
@@ -21,14 +29,6 @@ const myAsyncFunction = async () => {
   table_header_signal_unit.textContent = " (" + units[SIGNAL_NAME] + ")";
   title_signal_name.textContent = prettifySignalNames(SIGNAL_NAME);
 
-  // get data from API
-  const response = await fetch(
-    `http://webapi19sa-1.course.tamk.cloud/v1/weather/${SIGNAL_NAME}`
-  );
-  // console.log(response);
-
-  // get the json response
-  const signals = await response.json();
   console.log("data:", signals);
 
   for (let signal of signals) {
@@ -115,6 +115,6 @@ const addChartThing = async (signals, SIGNAL_NAME) => {
 };
 
 window.onload = function () {
-  myAsyncFunction();
+  addTableFromData();
   console.log("Page loaded");
 };
