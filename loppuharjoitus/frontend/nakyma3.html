@@ -34,11 +34,24 @@
     <!-- end navbar -->
     <div class="container" id="content">
       <!-- begin content -->
-
+      <h1>20 datapoints of <span id="title_signal_name"></span></h1>
+      <div>
+        <table class="table table-sm table-striped table-bordered">
+          <thead class="table-dark">
+            <tr>
+              <th>Date</th>
+              <th>Value <span id="table_header_signal_unit"></span></th>
+            </tr>
+          </thead>
+          <tbody id="tablebody"></tbody>
+        </table>
+      </div>
       <!-- end content -->
     </div>
     <footer>&copy; Valtteri Huuskonen 2021</footer>
 
     <!-- link scripts -->
+    <script type="module" src="nakyma3.js"></script>
+    <script type="module" src="/config.js"></script>
   </body>
 </html>
