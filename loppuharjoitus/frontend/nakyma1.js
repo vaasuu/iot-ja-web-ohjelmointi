@@ -1,6 +1,14 @@
-import { units } from "/config.js";
+import { units, prettySignalNames } from "/config.js";
 console.log("units", units);
 const tableBody = document.getElementById("tablebody");
+
+const prettifySignalNames = (uglySignalName) => {
+  if (uglySignalName in prettySignalNames) {
+    return prettySignalNames[uglySignalName];
+  } else {
+    return uglySignalName;
+  }
+};
 
 const myAsyncFunction = async () => {
   // get data from API
@@ -23,7 +31,12 @@ const myAsyncFunction = async () => {
 
     // console.log("units", units);
 
-    const cellDataArray = [signal.date_time, key, signal.data[key], units[key]];
+    const cellDataArray = [
+      signal.date_time,
+      prettifySignalNames(key),
+      signal.data[key],
+      units[key],
+    ];
 
     console.log(cellDataArray);
 
