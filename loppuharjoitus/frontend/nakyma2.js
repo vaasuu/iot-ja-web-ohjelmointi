@@ -40,7 +40,7 @@ const setTitleAndTableUnit = (SIGNAL_NAME) => {
   let title_text = document.getElementById("title_text");
   let duration = time_chooser_Element.value;
   const timeThings = {
-    now: "Latest 20 datapoints of ",
+    now: "20 latest datapoints of ",
     24: "The last 24 hours of ",
     48: "The last 48 hours of ",
     72: "The last 72 hours of ",
