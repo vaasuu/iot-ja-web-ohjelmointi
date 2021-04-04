@@ -1,11 +1,14 @@
 import { units } from "/units.js";
 console.log("units", units);
+
 const tableBody = document.getElementById("tablebody");
 
 const myAsyncFunction = async () => {
+  let SIGNAL_NAME = "temperature";
+
   // get data from API
   const response = await fetch(
-    "http://webapi19sa-1.course.tamk.cloud/v1/weather/limit/50"
+    `http://webapi19sa-1.course.tamk.cloud/v1/weather/${SIGNAL_NAME}`
   );
   // console.log(response);
 
@@ -19,11 +22,7 @@ const myAsyncFunction = async () => {
     // create a row table element
     const row = document.createElement("tr");
 
-    let key = Object.keys(signal.data)[0];
-
-    // console.log("units", units);
-
-    const cellDataArray = [signal.date_time, key, signal.data[key], units[key]];
+    const cellDataArray = [signal.date_time, signal[SIGNAL_NAME]];
 
     console.log(cellDataArray);
 
