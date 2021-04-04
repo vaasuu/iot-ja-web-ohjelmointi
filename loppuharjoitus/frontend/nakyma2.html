@@ -44,7 +44,19 @@
         <option value="720">1 month</option>
       </select>
 
-      <h1>20 datapoints of <span id="title_signal_name"></span></h1>
+      <div id="spinner" class="d-flex align-items-center">
+        <strong>Loading...</strong>
+        <div
+          class="spinner-border ml-auto"
+          role="status"
+          aria-hidden="true"
+        ></div>
+      </div>
+
+      <h1>
+        <span id="title_text">Latest 20 datapoints of </span
+        ><span id="title_signal_name">temperature</span>
+      </h1>
 
       <div style="position: relative; max-width: 800px">
         <canvas

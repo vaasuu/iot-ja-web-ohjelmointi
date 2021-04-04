@@ -1,6 +1,15 @@
 import { units, prettySignalNames } from "/config.js";
 console.log("units", units);
 
+let loadingSpinner = (visible) => {
+  let spinner = document.getElementById("spinner");
+  if (visible) {
+    spinner.style.visibility = "visible";
+  } else {
+    spinner.style.visibility = "hidden";
+  }
+};
+
 const prettifySignalNames = (uglySignalName) => {
   if (uglySignalName in prettySignalNames) {
     return prettySignalNames[uglySignalName];
@@ -27,6 +36,28 @@ const timeframeToUrl = (SIGNAL_NAME, baseUrl = "/") => {
   return dataUrl;
 };
 
+const setTitleAndTableUnit = (SIGNAL_NAME) => {
+  let title_text = document.getElementById("title_text");
+  let duration = time_chooser_Element.value;
+  const timeThings = {
+    now: "Latest 20 datapoints of ",
+    24: "The last 24 hours of ",
+    48: "The last 48 hours of ",
+    72: "The last 72 hours of ",
+    168: "The last 7 days of ",
+    720: "The last 30 days of ",
+  };
+
+  title_text.textContent = timeThings[duration];
+
+  let table_header_signal_unit = document.getElementById(
+    "table_header_signal_unit"
+  );
+  let title_signal_name = document.getElementById("title_signal_name");
+  table_header_signal_unit.textContent = " (" + units[SIGNAL_NAME] + ")";
+  title_signal_name.textContent = prettifySignalNames(SIGNAL_NAME);
+};
+
 const getDataFromUrl = async (dataUrl) => {
   // get data from API
   const response = await fetch(`${dataUrl}`);
@@ -40,13 +71,6 @@ const getDataFromUrl = async (dataUrl) => {
 const tableBody = document.getElementById("tablebody");
 
 const addTableFromData = async (SIGNAL_NAME, signals) => {
-  let table_header_signal_unit = document.getElementById(
-    "table_header_signal_unit"
-  );
-  let title_signal_name = document.getElementById("title_signal_name");
-  table_header_signal_unit.textContent = " (" + units[SIGNAL_NAME] + ")";
-  title_signal_name.textContent = prettifySignalNames(SIGNAL_NAME);
-
   console.log(SIGNAL_NAME);
   console.log("data:", signals);
 
@@ -141,14 +165,17 @@ const addChartThing = (signals, SIGNAL_NAME) => {
 };
 
 const LoadThing = async () => {
+  loadingSpinner(true);
   let SIGNAL_NAME = "temperature";
   let dataUrl = timeframeToUrl(
     SIGNAL_NAME,
     "http://webapi19sa-1.course.tamk.cloud/"
   );
+  setTitleAndTableUnit(SIGNAL_NAME);
   let signals = await getDataFromUrl(dataUrl);
   addTableFromData(SIGNAL_NAME, signals);
   addChartThing(signals, SIGNAL_NAME);
+  loadingSpinner(false);
   console.log("Page loaded");
 };
 
