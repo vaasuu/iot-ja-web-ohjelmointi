@@ -117,9 +117,11 @@ const addChartThing = (signals, SIGNAL_NAME) => {
             time: {
               // check out https://date-fns.org/v2.19.0/docs/Locale
               tooltipFormat: "dd.MM.y HH:mm:ss",
-              unit: "second",
+              // unit: "second",
               displayFormats: {
                 second: "HH:mm:ss",
+                hour: "HH",
+                day: "d MMM"
               },
             },
             ticks: {
