@@ -14,7 +14,7 @@ let time_chooser_Element = document.getElementById("time_chooser");
 const timeframeToUrl = (SIGNAL_NAME, baseUrl = "/") => {
   let duration = time_chooser_Element.value;
   console.log(duration);
-  
+
   if (duration == "now") {
     console.log(baseUrl);
     console.log(SIGNAL_NAME);
@@ -62,7 +62,7 @@ const addTableFromData = async (SIGNAL_NAME, signals) => {
     const cellDataArray = [signal.date_time, signal[SIGNAL_NAME]];
 
     console.log(cellDataArray);
-    
+
     // create a cell for every value on row array
     for (let cellData of cellDataArray) {
       // create the data cell element
@@ -125,7 +125,7 @@ const addChartThing = (signals, SIGNAL_NAME) => {
               displayFormats: {
                 second: "HH:mm:ss",
                 hour: "HH",
-                day: "d MMM"
+                day: "d MMM",
               },
             },
             ticks: {
@@ -140,15 +140,17 @@ const addChartThing = (signals, SIGNAL_NAME) => {
   });
 };
 
-
 const LoadThing = async () => {
-  let SIGNAL_NAME = "temperature"
-  let dataUrl = timeframeToUrl(SIGNAL_NAME, "http://webapi19sa-1.course.tamk.cloud/")
+  let SIGNAL_NAME = "temperature";
+  let dataUrl = timeframeToUrl(
+    SIGNAL_NAME,
+    "http://webapi19sa-1.course.tamk.cloud/"
+  );
   let signals = await getDataFromUrl(dataUrl);
   addTableFromData(SIGNAL_NAME, signals);
   addChartThing(signals, SIGNAL_NAME);
   console.log("Page loaded");
-}
+};
 
 window.onload = function () {
   LoadThing();
@@ -156,4 +158,4 @@ window.onload = function () {
 
 time_chooser_Element.addEventListener("change", () => {
   LoadThing();
-})
+});
