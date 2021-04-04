@@ -9,9 +9,27 @@ const prettifySignalNames = (uglySignalName) => {
   }
 };
 
-const getDataFromUrl = async (URL) => {
+let time_chooser_Element = document.getElementById("time_chooser");
+
+const timeframeToUrl = (SIGNAL_NAME, baseUrl = "/") => {
+  let duration = time_chooser_Element.value;
+  console.log(duration);
+  
+  if (duration == "now") {
+    console.log(baseUrl);
+    console.log(SIGNAL_NAME);
+    var dataUrl = baseUrl + "v1/weather/" + SIGNAL_NAME;
+  } else {
+    var dataUrl = baseUrl + "v1/weather/" + SIGNAL_NAME + "/" + duration;
+  }
+
+  console.log(dataUrl);
+  return dataUrl;
+};
+
+const getDataFromUrl = async (dataUrl) => {
   // get data from API
-  const response = await fetch(`${URL}`);
+  const response = await fetch(`${dataUrl}`);
   // console.log(response);
 
   // get the json response
@@ -29,7 +47,11 @@ const addTableFromData = async (SIGNAL_NAME, signals) => {
   table_header_signal_unit.textContent = " (" + units[SIGNAL_NAME] + ")";
   title_signal_name.textContent = prettifySignalNames(SIGNAL_NAME);
 
+  console.log(SIGNAL_NAME);
   console.log("data:", signals);
+
+  // clear table
+  tableBody.textContent = "";
 
   for (let signal of signals) {
     // console.log(signal);
@@ -40,7 +62,7 @@ const addTableFromData = async (SIGNAL_NAME, signals) => {
     const cellDataArray = [signal.date_time, signal[SIGNAL_NAME]];
 
     console.log(cellDataArray);
-
+    
     // create a cell for every value on row array
     for (let cellData of cellDataArray) {
       // create the data cell element
@@ -59,7 +81,7 @@ const addTableFromData = async (SIGNAL_NAME, signals) => {
   addChartThing(signals, SIGNAL_NAME);
 };
 
-const addChartThing = async (signals, SIGNAL_NAME) => {
+const addChartThing = (signals, SIGNAL_NAME) => {
   console.log(signals);
   console.log(typeof parseFloat(signals[0][SIGNAL_NAME]));
 
@@ -95,16 +117,14 @@ const addChartThing = async (signals, SIGNAL_NAME) => {
             time: {
               // check out https://date-fns.org/v2.19.0/docs/Locale
               tooltipFormat: " dd.MM.y HH:mm:ss",
-              // tooltipFormat: 'dd.MM.y HH:mm:ss',
               unit: "second",
-              unitStepSize: 1,
               displayFormats: {
                 second: "HH:mm:ss",
               },
             },
             ticks: {
               fontColor: "#000",
-              maxTicksLimit: 20,
+              maxTicksLimit: 30,
               source: "auto",
             },
           },
@@ -114,7 +134,19 @@ const addChartThing = async (signals, SIGNAL_NAME) => {
   });
 };
 
-window.onload = function () {
-  addTableFromData();
+
+const LoadThing = async () => {
+  let SIGNAL_NAME = "temperature"
+  let dataUrl = timeframeToUrl(SIGNAL_NAME, "http://webapi19sa-1.course.tamk.cloud/")
+  let signals = await getDataFromUrl(dataUrl);
+  addTableFromData(SIGNAL_NAME, signals);
   console.log("Page loaded");
+}
+
+window.onload = function () {
+  LoadThing();
 };
+
+time_chooser_Element.addEventListener("change", () => {
+  LoadThing();
+})
