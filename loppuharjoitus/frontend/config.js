@@ -1,4 +1,4 @@
-export const units = {
+let units = {
   humidity_in: "%",
   humidity_out: "0..1",
   light: "¯\\_(ツ)_/¯",
@@ -7,3 +7,5 @@ export const units = {
   wind_direction: "°",
   wind_speed: "m/s",
 };
+
+export { units };

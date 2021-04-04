@@ -1,4 +1,4 @@
-import { units } from "/units.js";
+import { units } from "/config.js";
 console.log("units", units);
 
 const tableBody = document.getElementById("tablebody");
