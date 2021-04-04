@@ -8,4 +8,15 @@ let units = {
   wind_speed: "m/s",
 };
 
-export { units };
+let prettySignalNames = {
+  Air_pres_1: "Air pressure 1",
+  humidity_in: "humidity inside",
+  humidity_out: "humidity outside",
+  light: "light level",
+  rain: "rain",
+  temperature: "temperature",
+  wind_direction: "wind direction",
+  wind_speed: "wind speed",
+};
+
+export { units, prettySignalNames };

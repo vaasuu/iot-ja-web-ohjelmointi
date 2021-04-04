@@ -1,5 +1,13 @@
-import { units } from "/config.js";
+import { units, prettySignalNames } from "/config.js";
 console.log("units", units);
+
+const prettifySignalNames = (uglySignalName) => {
+  if (uglySignalName in prettySignalNames) {
+    return prettySignalNames[uglySignalName];
+  } else {
+    return uglySignalName;
+  }
+};
 
 const tableBody = document.getElementById("tablebody");
 
@@ -11,8 +19,8 @@ const myAsyncFunction = async () => {
   );
   let title_signal_name = document.getElementById("title_signal_name");
   table_header_signal_unit.textContent = " (" + units[SIGNAL_NAME] + ")";
-  title_signal_name.textContent = SIGNAL_NAME;
-
+  title_signal_name.textContent = prettifySignalNames(SIGNAL_NAME);
+  
   // get data from API
   const response = await fetch(
     `http://webapi19sa-1.course.tamk.cloud/v1/weather/${SIGNAL_NAME}`
