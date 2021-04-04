@@ -34,9 +34,31 @@
     <!-- end navbar -->
     <div class="container" id="content">
       <!-- begin content -->
-      <h1>20 datapoints of <span id="title_signal_name"></span></h1>
+      <label for="time_chooser">View weather data for</label>
+      <select name="time_chooser" id="time_chooser">
+        <option value="now">Now</option>
+        <option value="24">24 hours</option>
+        <option value="48">48 hours</option>
+        <option value="72">72 hours</option>
+        <option value="168">1 week</option>
+        <option value="720">1 month</option>
+      </select>
 
-      <div style="position: relative; max-width: 800px">
+      <div id="spinner" class="d-flex align-items-center">
+        <strong>Loading...</strong>
+        <div
+          class="spinner-border ml-auto"
+          role="status"
+          aria-hidden="true"
+        ></div>
+      </div>
+
+      <h1>
+        <span id="title_text">20 latest datapoints of </span
+        ><span id="title_signal_name">temperature</span>
+      </h1>
+
+      <div style="position: relative; max-width: 1 vw">
         <canvas
           id="myChart"
           role="img"

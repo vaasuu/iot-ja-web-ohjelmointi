@@ -1,6 +1,15 @@
 import { units, prettySignalNames } from "/config.js";
 console.log("units", units);
 
+let loadingSpinner = (visible) => {
+  let spinner = document.getElementById("spinner");
+  if (visible) {
+    spinner.style.visibility = "visible";
+  } else {
+    spinner.style.visibility = "hidden";
+  }
+};
+
 const prettifySignalNames = (uglySignalName) => {
   if (uglySignalName in prettySignalNames) {
     return prettySignalNames[uglySignalName];
@@ -9,10 +18,37 @@ const prettifySignalNames = (uglySignalName) => {
   }
 };
 
-const tableBody = document.getElementById("tablebody");
+let time_chooser_Element = document.getElementById("time_chooser");
 
-const myAsyncFunction = async () => {
-  let SIGNAL_NAME = "wind_speed";
+const timeframeToUrl = (SIGNAL_NAME, baseUrl = "/") => {
+  let duration = time_chooser_Element.value;
+  console.log(duration);
+
+  if (duration == "now") {
+    console.log(baseUrl);
+    console.log(SIGNAL_NAME);
+    var dataUrl = baseUrl + "v1/weather/" + SIGNAL_NAME;
+  } else {
+    var dataUrl = baseUrl + "v1/weather/" + SIGNAL_NAME + "/" + duration;
+  }
+
+  console.log(dataUrl);
+  return dataUrl;
+};
+
+const setTitleAndTableUnit = (SIGNAL_NAME) => {
+  let title_text = document.getElementById("title_text");
+  let duration = time_chooser_Element.value;
+  const timeThings = {
+    now: "20 latest datapoints of ",
+    24: "The last 24 hours of ",
+    48: "The last 48 hours of ",
+    72: "The last 72 hours of ",
+    168: "The last 7 days of ",
+    720: "The last 30 days of ",
+  };
+
+  title_text.textContent = timeThings[duration];
 
   let table_header_signal_unit = document.getElementById(
     "table_header_signal_unit"
@@ -20,16 +56,26 @@ const myAsyncFunction = async () => {
   let title_signal_name = document.getElementById("title_signal_name");
   table_header_signal_unit.textContent = " (" + units[SIGNAL_NAME] + ")";
   title_signal_name.textContent = prettifySignalNames(SIGNAL_NAME);
+};
 
+const getDataFromUrl = async (dataUrl) => {
   // get data from API
-  const response = await fetch(
-    `http://webapi19sa-1.course.tamk.cloud/v1/weather/${SIGNAL_NAME}`
-  );
+  const response = await fetch(`${dataUrl}`);
   // console.log(response);
 
   // get the json response
   const signals = await response.json();
+  return signals;
+};
+
+const tableBody = document.getElementById("tablebody");
+
+const addTableFromData = async (SIGNAL_NAME, signals) => {
+  console.log(SIGNAL_NAME);
   console.log("data:", signals);
+
+  // clear table
+  tableBody.textContent = "";
 
   for (let signal of signals) {
     // console.log(signal);
@@ -56,18 +102,22 @@ const myAsyncFunction = async () => {
     // append row to table
     tableBody.appendChild(row);
   }
-  addChartThing(signals, SIGNAL_NAME);
 };
 
-const addChartThing = async (signals, SIGNAL_NAME) => {
+// Get the canvas element from HTML DOM
+const canvasElement = document.getElementById("myChart");
+// Initialize the Chartjs chart object as a global variable
+let myChart = new Chart(canvasElement);
+
+const addChartThing = (signals, SIGNAL_NAME) => {
   console.log(signals);
-  console.log(typeof parseFloat(signals[0][SIGNAL_NAME]));
 
-  // Get the canvas element from HTML DOM
-  const canvasElement = document.getElementById("myChart");
+  // Destroy old chart, so no hover eventlisteners etc. are left over
+  myChart.destroy();
+  console.log("Destroyed old myChart");
 
-  // Initialize the Chartjs library
-  const myChart = new Chart(canvasElement, {
+  // Create new chart
+  myChart = new Chart(canvasElement, {
     type: "line",
     data: {
       labels: signals.map((values) => values.date_time),
@@ -95,16 +145,16 @@ const addChartThing = async (signals, SIGNAL_NAME) => {
             time: {
               // check out https://date-fns.org/v2.19.0/docs/Locale
               tooltipFormat: "dd.MM.y HH:mm:ss",
-              // tooltipFormat: 'dd.MM.y HH:mm:ss',
-              unit: "second",
-              unitStepSize: 1,
+              // unit: "second",
               displayFormats: {
                 second: "HH:mm:ss",
+                hour: "HH",
+                day: "d MMM",
               },
             },
             ticks: {
               fontColor: "#000",
-              maxTicksLimit: 20,
+              maxTicksLimit: 30,
               source: "auto",
             },
           },
@@ -114,7 +164,25 @@ const addChartThing = async (signals, SIGNAL_NAME) => {
   });
 };
 
-window.onload = function () {
-  myAsyncFunction();
+const LoadThing = async () => {
+  loadingSpinner(true);
+  let SIGNAL_NAME = "light";
+  let dataUrl = timeframeToUrl(
+    SIGNAL_NAME,
+    "http://webapi19sa-1.course.tamk.cloud/"
+  );
+  setTitleAndTableUnit(SIGNAL_NAME);
+  let signals = await getDataFromUrl(dataUrl);
+  addTableFromData(SIGNAL_NAME, signals);
+  addChartThing(signals, SIGNAL_NAME);
+  loadingSpinner(false);
   console.log("Page loaded");
 };
+
+window.onload = function () {
+  LoadThing();
+};
+
+time_chooser_Element.addEventListener("change", () => {
+  LoadThing();
+});
