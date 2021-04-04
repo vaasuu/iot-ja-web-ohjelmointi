@@ -78,18 +78,22 @@ const addTableFromData = async (SIGNAL_NAME, signals) => {
     // append row to table
     tableBody.appendChild(row);
   }
-  addChartThing(signals, SIGNAL_NAME);
 };
+
+// Get the canvas element from HTML DOM
+const canvasElement = document.getElementById("myChart");
+// Initialize the Chartjs chart object as a global variable
+let myChart = new Chart(canvasElement);
 
 const addChartThing = (signals, SIGNAL_NAME) => {
   console.log(signals);
-  console.log(typeof parseFloat(signals[0][SIGNAL_NAME]));
 
-  // Get the canvas element from HTML DOM
-  const canvasElement = document.getElementById("myChart");
+  // Destroy old chart, so no hover eventlisteners etc. are left over
+  myChart.destroy();
+  console.log("Destroyed old myChart");
 
-  // Initialize the Chartjs library
-  const myChart = new Chart(canvasElement, {
+  // Create new chart
+  myChart = new Chart(canvasElement, {
     type: "line",
     data: {
       labels: signals.map((values) => values.date_time),
@@ -142,6 +146,7 @@ const LoadThing = async () => {
   let dataUrl = timeframeToUrl(SIGNAL_NAME, "http://webapi19sa-1.course.tamk.cloud/")
   let signals = await getDataFromUrl(dataUrl);
   addTableFromData(SIGNAL_NAME, signals);
+  addChartThing(signals, SIGNAL_NAME);
   console.log("Page loaded");
 }
 
