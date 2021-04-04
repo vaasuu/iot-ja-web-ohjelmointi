@@ -35,6 +35,15 @@
     <div class="container" id="content">
       <!-- begin content -->
       <h1>20 datapoints of <span id="title_signal_name"></span></h1>
+
+      <div style="position: relative; max-width: 800px">
+        <canvas
+          id="myChart"
+          role="img"
+          aria-label="line chart of weather data"
+        ></canvas>
+      </div>
+
       <div>
         <table class="table table-sm table-striped table-bordered">
           <thead class="table-dark">
@@ -51,6 +60,8 @@
     <footer>&copy; Valtteri Huuskonen 2021</footer>
 
     <!-- link scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns@next/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
     <script type="module" src="nakyma3.js"></script>
     <script type="module" src="/config.js"></script>
   </body>
