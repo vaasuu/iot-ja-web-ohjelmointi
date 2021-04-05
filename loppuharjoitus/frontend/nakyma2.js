@@ -72,7 +72,7 @@ const tableBody = document.getElementById("tablebody");
 
 const addTableFromData = async (SIGNAL_NAME, measurements) => {
   console.log("SIGNAL_NAME", SIGNAL_NAME);
-  console.log("data:", measurements);
+  console.log("measurement data:", measurements);
 
   // clear table
   tableBody.textContent = "";
@@ -110,7 +110,7 @@ const canvasElement = document.getElementById("myChart");
 let myChart = new Chart(canvasElement);
 
 const addChartThing = (measurements, SIGNAL_NAME) => {
-  console.log(measurements);
+  //console.log(measurements);
 
   // Destroy old chart, so no hover eventlisteners etc. are left over
   myChart.destroy();
@@ -175,7 +175,7 @@ const fillSignalChooser = async (apiBaseUrl) => {
     const jsonResponse = await response.json();
     console.log(jsonResponse);
     jsonResponse.forEach((signalName) => {
-      console.log(signalName);
+      // console.log(signalName);
       let optionElement = document.createElement("option");
       optionElement.textContent = prettifySignalNames(signalName.name);
       optionElement.value = signalName.name;
