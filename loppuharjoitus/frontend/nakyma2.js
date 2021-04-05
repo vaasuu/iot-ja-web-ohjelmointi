@@ -64,26 +64,26 @@ const getDataFromUrl = async (dataUrl) => {
   // console.log(response);
 
   // get the json response
-  const signals = await response.json();
-  return signals;
+  const measurements = await response.json();
+  return measurements;
 };
 
 const tableBody = document.getElementById("tablebody");
 
-const addTableFromData = async (SIGNAL_NAME, signals) => {
+const addTableFromData = async (SIGNAL_NAME, measurements) => {
   console.log(SIGNAL_NAME);
-  console.log("data:", signals);
+  console.log("data:", measurements);
 
   // clear table
   tableBody.textContent = "";
 
-  for (let signal of signals) {
+  for (let measurement of measurements) {
     // console.log(signal);
 
     // create a row table element
     const row = document.createElement("tr");
 
-    const cellDataArray = [signal.date_time, signal[SIGNAL_NAME]];
+    const cellDataArray = [measurement.date_time, measurement[SIGNAL_NAME]];
 
     console.log(cellDataArray);
 
@@ -109,8 +109,8 @@ const canvasElement = document.getElementById("myChart");
 // Initialize the Chartjs chart object as a global variable
 let myChart = new Chart(canvasElement);
 
-const addChartThing = (signals, SIGNAL_NAME) => {
-  console.log(signals);
+const addChartThing = (measurements, SIGNAL_NAME) => {
+  console.log(measurements);
 
   // Destroy old chart, so no hover eventlisteners etc. are left over
   myChart.destroy();
@@ -120,12 +120,12 @@ const addChartThing = (signals, SIGNAL_NAME) => {
   myChart = new Chart(canvasElement, {
     type: "line",
     data: {
-      labels: signals.map((values) => values.date_time),
+      labels: measurements.map((values) => values.date_time),
       datasets: [
         {
           label:
             prettifySignalNames(SIGNAL_NAME) + " (" + units[SIGNAL_NAME] + ")",
-          data: signals.map((values) =>
+          data: measurements.map((values) =>
             parseFloat(values[SIGNAL_NAME]).toFixed(2)
           ),
           backgroundColor: "rgba(0, 102, 255, 0.5)",
@@ -172,9 +172,9 @@ const LoadThing = async () => {
     "http://webapi19sa-1.course.tamk.cloud/"
   );
   setTitleAndTableUnit(SIGNAL_NAME);
-  let signals = await getDataFromUrl(dataUrl);
-  addTableFromData(SIGNAL_NAME, signals);
-  addChartThing(signals, SIGNAL_NAME);
+  let measurements = await getDataFromUrl(dataUrl);
+  addTableFromData(SIGNAL_NAME, measurements);
+  addChartThing(measurements, SIGNAL_NAME);
   loadingSpinner(false);
   console.log("Page loaded");
 };

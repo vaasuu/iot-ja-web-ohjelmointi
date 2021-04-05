@@ -18,23 +18,23 @@ const myAsyncFunction = async () => {
   // console.log(response);
 
   // get the json response
-  const signals = await response.json();
-  console.log("data:", signals);
+  const measurements = await response.json();
+  console.log("data:", measurements);
 
-  for (let signal of signals) {
+  for (let measurement of measurements) {
     // console.log(signal);
 
     // create a row table element
     const row = document.createElement("tr");
 
-    let key = Object.keys(signal.data)[0];
+    let key = Object.keys(measurement.data)[0];
 
     // console.log("units", units);
 
     const cellDataArray = [
-      signal.date_time,
+      measurement.date_time,
       prettifySignalNames(key),
-      signal.data[key],
+      measurement.data[key],
       units[key],
     ];
 
