@@ -177,7 +177,7 @@ const fillSignalChooser = async (apiBaseUrl) => {
     jsonResponse.forEach((signalName) => {
       console.log(signalName);
       let optionElement = document.createElement("option");
-      optionElement.textContent = signalName.name;
+      optionElement.textContent = prettifySignalNames(signalName.name);
       optionElement.value = signalName.name;
       signalChooserElement.appendChild(optionElement);
     });
