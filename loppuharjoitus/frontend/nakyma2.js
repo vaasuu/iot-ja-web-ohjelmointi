@@ -5,8 +5,12 @@ let loadingSpinner = (visible) => {
   let spinner = document.getElementById("spinner");
   if (visible) {
     spinner.style.visibility = "visible";
+    signalChooserElement.disabled = true;
+    time_chooser_Element.disabled = true;
   } else {
     spinner.style.visibility = "hidden";
+    signalChooserElement.disabled = false;
+    time_chooser_Element.disabled = false;
   }
 };
 
