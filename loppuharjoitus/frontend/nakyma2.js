@@ -22,7 +22,7 @@ let time_chooser_Element = document.getElementById("time_chooser");
 
 const timeframeToUrl = (SIGNAL_NAME, baseUrl = "/") => {
   let duration = time_chooser_Element.value;
-  console.log(duration);
+  console.log("duration:", duration);
 
   if (duration == "now") {
     console.log(baseUrl);
@@ -71,7 +71,7 @@ const getDataFromUrl = async (dataUrl) => {
 const tableBody = document.getElementById("tablebody");
 
 const addTableFromData = async (SIGNAL_NAME, measurements) => {
-  console.log(SIGNAL_NAME);
+  console.log("SIGNAL_NAME", SIGNAL_NAME);
   console.log("data:", measurements);
 
   // clear table
@@ -85,7 +85,7 @@ const addTableFromData = async (SIGNAL_NAME, measurements) => {
 
     const cellDataArray = [measurement.date_time, measurement[SIGNAL_NAME]];
 
-    console.log(cellDataArray);
+    // console.log(cellDataArray);
 
     // create a cell for every value on row array
     for (let cellData of cellDataArray) {
@@ -164,20 +164,46 @@ const addChartThing = (measurements, SIGNAL_NAME) => {
   });
 };
 
+const fillSignalChooser = async (apiBaseUrl) => {
+  let signalChooserElement = document.getElementById("signal_chooser");
+
+  // Clear old dropdown options
+  signalChooserElement.textContent = "";
+  // get signal names from API
+  const response = await fetch(`${apiBaseUrl}v1/weather/names`);
+  // get the json response
+  const jsonResponse = await response.json();
+  console.log(jsonResponse);
+  jsonResponse.forEach(signalName => {
+    console.log(signalName);
+    let optionElement = document.createElement("option");
+    optionElement.textContent = signalName.name;
+    optionElement.value = signalName.name;
+    signalChooserElement.appendChild(optionElement)
+  });
+}
+
 const getChosenSignalName = () => {
-  let SignalNameElement = document.getElementById(signal_chooser);
-  let SIGNAL_NAME = time_chooser_Element.value;
+  let signal_chooserElement = document.getElementById(signal_chooser);
+  let SIGNAL_NAME = signal_chooser.value;
+  console.log("signal_chooser", signal_chooser);
   return SIGNAL_NAME;
 }
 
 const LoadThing = async () => {
+  let apiBaseUrl = "http://webapi19sa-1.course.tamk.cloud/";
   loadingSpinner(true);
+
+  await fillSignalChooser(apiBaseUrl);
   // let SIGNAL_NAME = "temperature";
   let SIGNAL_NAME = getChosenSignalName();
+  console.log("SIGNAL_NAME: ", SIGNAL_NAME);
   let dataUrl = timeframeToUrl(
     SIGNAL_NAME,
-    "http://webapi19sa-1.course.tamk.cloud/"
+    apiBaseUrl
   );
+  console.log("dataUrl", dataUrl);
+
   setTitleAndTableUnit(SIGNAL_NAME);
   let measurements = await getDataFromUrl(dataUrl);
   addTableFromData(SIGNAL_NAME, measurements);
