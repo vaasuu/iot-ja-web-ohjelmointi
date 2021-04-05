@@ -164,9 +164,16 @@ const addChartThing = (measurements, SIGNAL_NAME) => {
   });
 };
 
+const getChosenSignalName = () => {
+  let SignalNameElement = document.getElementById(signal_chooser);
+  let SIGNAL_NAME = time_chooser_Element.value;
+  return SIGNAL_NAME;
+}
+
 const LoadThing = async () => {
   loadingSpinner(true);
-  let SIGNAL_NAME = "temperature";
+  // let SIGNAL_NAME = "temperature";
+  let SIGNAL_NAME = getChosenSignalName();
   let dataUrl = timeframeToUrl(
     SIGNAL_NAME,
     "http://webapi19sa-1.course.tamk.cloud/"
