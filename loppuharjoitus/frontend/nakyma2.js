@@ -1,4 +1,4 @@
-import { units, prettySignalNames } from "/config.js";
+import { units, prettySignalNames, apiBaseUrl } from "/config.js";
 console.log("units", units);
 
 let loadingSpinner = (visible) => {
@@ -164,44 +164,40 @@ const addChartThing = (measurements, SIGNAL_NAME) => {
   });
 };
 
-const fillSignalChooser = async (apiBaseUrl) => {
-  let signalChooserElement = document.getElementById("signal_chooser");
+let signalChooserElement = document.getElementById("signal_chooser");
 
-  // Clear old dropdown options
-  signalChooserElement.textContent = "";
-  // get signal names from API
-  const response = await fetch(`${apiBaseUrl}v1/weather/names`);
-  // get the json response
-  const jsonResponse = await response.json();
-  console.log(jsonResponse);
-  jsonResponse.forEach(signalName => {
-    console.log(signalName);
-    let optionElement = document.createElement("option");
-    optionElement.textContent = signalName.name;
-    optionElement.value = signalName.name;
-    signalChooserElement.appendChild(optionElement)
-  });
-}
+const fillSignalChooser = async (apiBaseUrl) => {
+  if (signalChooserElement.textContent == "") {
+    console.log("its empyty… Filling");
+    // get signal names from API
+    const response = await fetch(`${apiBaseUrl}v1/weather/names`);
+    // get the json response
+    const jsonResponse = await response.json();
+    console.log(jsonResponse);
+    jsonResponse.forEach((signalName) => {
+      console.log(signalName);
+      let optionElement = document.createElement("option");
+      optionElement.textContent = signalName.name;
+      optionElement.value = signalName.name;
+      signalChooserElement.appendChild(optionElement);
+    });
+  }
+};
 
 const getChosenSignalName = () => {
   let signal_chooserElement = document.getElementById(signal_chooser);
   let SIGNAL_NAME = signal_chooser.value;
   console.log("signal_chooser", signal_chooser);
   return SIGNAL_NAME;
-}
+};
 
 const LoadThing = async () => {
-  let apiBaseUrl = "http://webapi19sa-1.course.tamk.cloud/";
   loadingSpinner(true);
-
   await fillSignalChooser(apiBaseUrl);
   // let SIGNAL_NAME = "temperature";
   let SIGNAL_NAME = getChosenSignalName();
   console.log("SIGNAL_NAME: ", SIGNAL_NAME);
-  let dataUrl = timeframeToUrl(
-    SIGNAL_NAME,
-    apiBaseUrl
-  );
+  let dataUrl = timeframeToUrl(SIGNAL_NAME, apiBaseUrl);
   console.log("dataUrl", dataUrl);
 
   setTitleAndTableUnit(SIGNAL_NAME);
@@ -217,5 +213,9 @@ window.onload = function () {
 };
 
 time_chooser_Element.addEventListener("change", () => {
+  LoadThing();
+});
+
+signalChooserElement.addEventListener("change", () => {
   LoadThing();
 });
