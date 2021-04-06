@@ -177,7 +177,8 @@ const addChartThing = (measurements, SIGNAL_NAME) => {
               // unit: "second",
               displayFormats: {
                 second: "HH:mm:ss",
-                hour: "HH",
+                minute: "HH:mm",
+                hour: "eee HH",
                 day: "d MMM",
               },
             },
