@@ -14,6 +14,31 @@ let loadingSpinner = (visible) => {
   }
 };
 
+let stopwatch_setInterval;
+let loadingStopwatch = (running) => {
+  let waiting_msg = document.getElementById("waiting_msg");
+  let stopwatch = document.getElementById("stopwatch");
+
+  let counter = 0;
+  let timerTick = () => {
+    counter++;
+    // console.log(counter);
+    let date = new Date(null);
+    date.setSeconds(counter); // specify value for SECONDS here
+    let result = date.toISOString().substr(11, 8);
+    stopwatch.textContent = result;
+  };
+
+  if (running) {
+    waiting_msg.style.visibility = "visible";
+    stopwatch_setInterval = setInterval(timerTick, 1000);
+  } else {
+    waiting_msg.style.visibility = "hidden";
+    clearInterval(stopwatch_setInterval);
+    stopwatch.textContent = "";
+  }
+};
+
 const prettifySignalNames = (uglySignalName) => {
   if (uglySignalName in prettySignalNames) {
     return prettySignalNames[uglySignalName];
@@ -196,6 +221,7 @@ const getChosenSignalName = () => {
 };
 
 const LoadThing = async () => {
+  loadingStopwatch(true);
   loadingSpinner(true);
   await fillSignalChooser(apiBaseUrl);
   // let SIGNAL_NAME = "temperature";
@@ -209,6 +235,7 @@ const LoadThing = async () => {
   addTableFromData(SIGNAL_NAME, measurements);
   addChartThing(measurements, SIGNAL_NAME);
   loadingSpinner(false);
+  loadingStopwatch(false);
   console.log("Page loaded");
 };
 
