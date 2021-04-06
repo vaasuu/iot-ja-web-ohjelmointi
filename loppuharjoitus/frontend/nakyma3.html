@@ -34,7 +34,10 @@
     <!-- end navbar -->
     <div class="container" id="content">
       <!-- begin content -->
-      <label for="time_chooser">View weather data for</label>
+      <label for="signal_chooser">View </label>
+      <select name="signal_chooser" id="signal_chooser"></select>
+
+      <label for="time_chooser">data for</label>
       <select name="time_chooser" id="time_chooser">
         <option value="now">Now</option>
         <option value="24">24 hours</option>
@@ -51,6 +54,9 @@
           role="status"
           aria-hidden="true"
         ></div>
+      </div>
+      <div id="waiting_msg">
+        <span>Time waited: <span id="stopwatch">00:00:00</span></span>
       </div>
 
       <h1>

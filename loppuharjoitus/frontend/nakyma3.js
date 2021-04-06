@@ -1,12 +1,41 @@
-import { units, prettySignalNames } from "/config.js";
+import { units, prettySignalNames, apiBaseUrl } from "/config.js";
 console.log("units", units);
 
 let loadingSpinner = (visible) => {
   let spinner = document.getElementById("spinner");
   if (visible) {
     spinner.style.visibility = "visible";
+    signalChooserElement.disabled = true;
+    time_chooser_Element.disabled = true;
   } else {
     spinner.style.visibility = "hidden";
+    signalChooserElement.disabled = false;
+    time_chooser_Element.disabled = false;
+  }
+};
+
+let stopwatch_setInterval;
+let loadingStopwatch = (running) => {
+  let waiting_msg = document.getElementById("waiting_msg");
+  let stopwatch = document.getElementById("stopwatch");
+
+  let counter = 0;
+  let timerTick = () => {
+    counter++;
+    // console.log(counter);
+    let date = new Date(null);
+    date.setSeconds(counter); // specify value for SECONDS here
+    let result = date.toISOString().substr(11, 8);
+    stopwatch.textContent = result;
+  };
+
+  if (running) {
+    waiting_msg.style.visibility = "visible";
+    stopwatch_setInterval = setInterval(timerTick, 1000);
+  } else {
+    waiting_msg.style.visibility = "hidden";
+    clearInterval(stopwatch_setInterval);
+    stopwatch.textContent = "";
   }
 };
 
@@ -22,7 +51,7 @@ let time_chooser_Element = document.getElementById("time_chooser");
 
 const timeframeToUrl = (SIGNAL_NAME, baseUrl = "/") => {
   let duration = time_chooser_Element.value;
-  console.log(duration);
+  console.log("duration:", duration);
 
   if (duration == "now") {
     console.log(baseUrl);
@@ -71,8 +100,8 @@ const getDataFromUrl = async (dataUrl) => {
 const tableBody = document.getElementById("tablebody");
 
 const addTableFromData = async (SIGNAL_NAME, measurements) => {
-  console.log(SIGNAL_NAME);
-  console.log("data:", measurements);
+  console.log("SIGNAL_NAME", SIGNAL_NAME);
+  console.log("measurement data:", measurements);
 
   // clear table
   tableBody.textContent = "";
@@ -85,7 +114,7 @@ const addTableFromData = async (SIGNAL_NAME, measurements) => {
 
     const cellDataArray = [measurement.date_time, measurement[SIGNAL_NAME]];
 
-    console.log(cellDataArray);
+    // console.log(cellDataArray);
 
     // create a cell for every value on row array
     for (let cellData of cellDataArray) {
@@ -110,7 +139,7 @@ const canvasElement = document.getElementById("myChart");
 let myChart = new Chart(canvasElement);
 
 const addChartThing = (measurements, SIGNAL_NAME) => {
-  console.log(measurements);
+  //console.log(measurements);
 
   // Destroy old chart, so no hover eventlisteners etc. are left over
   myChart.destroy();
@@ -128,8 +157,8 @@ const addChartThing = (measurements, SIGNAL_NAME) => {
           data: measurements.map((values) =>
             parseFloat(values[SIGNAL_NAME]).toFixed(2)
           ),
-          backgroundColor: "rgba(0, 102, 255, 0.5)",
-          borderColor: "blue",
+          backgroundColor: "rgba(255, 0, 0, 0.5)",
+          borderColor: "red",
           borderWidth: 2,
           lineTension: 0,
           pointRadius: 0,
@@ -148,7 +177,8 @@ const addChartThing = (measurements, SIGNAL_NAME) => {
               // unit: "second",
               displayFormats: {
                 second: "HH:mm:ss",
-                hour: "HH",
+                minute: "HH:mm",
+                hour: "eee HH",
                 day: "d MMM",
               },
             },
@@ -164,18 +194,49 @@ const addChartThing = (measurements, SIGNAL_NAME) => {
   });
 };
 
+let signalChooserElement = document.getElementById("signal_chooser");
+
+const fillSignalChooser = async (apiBaseUrl) => {
+  if (signalChooserElement.textContent == "") {
+    console.log("its empyty… Filling");
+    // get signal names from API
+    const response = await fetch(`${apiBaseUrl}v1/weather/names`);
+    // get the json response
+    const jsonResponse = await response.json();
+    console.log(jsonResponse);
+    jsonResponse.forEach((signalName) => {
+      // console.log(signalName);
+      let optionElement = document.createElement("option");
+      optionElement.textContent = prettifySignalNames(signalName.name);
+      optionElement.value = signalName.name;
+      signalChooserElement.appendChild(optionElement);
+    });
+  }
+};
+
+const getChosenSignalName = () => {
+  let signal_chooserElement = document.getElementById(signal_chooser);
+  let SIGNAL_NAME = signal_chooser.value;
+  console.log("signal_chooser", signal_chooser);
+  return SIGNAL_NAME;
+};
+
 const LoadThing = async () => {
+  loadingStopwatch(true);
   loadingSpinner(true);
-  let SIGNAL_NAME = "light";
-  let dataUrl = timeframeToUrl(
-    SIGNAL_NAME,
-    "http://webapi19sa-1.course.tamk.cloud/"
-  );
+  await fillSignalChooser(apiBaseUrl);
+  // let SIGNAL_NAME = "temperature";
+  let SIGNAL_NAME = getChosenSignalName();
+  console.log("SIGNAL_NAME: ", SIGNAL_NAME);
+  let dataUrl = timeframeToUrl(SIGNAL_NAME, apiBaseUrl);
+  console.log("dataUrl", dataUrl);
+
   setTitleAndTableUnit(SIGNAL_NAME);
   let measurements = await getDataFromUrl(dataUrl);
   addTableFromData(SIGNAL_NAME, measurements);
   addChartThing(measurements, SIGNAL_NAME);
   loadingSpinner(false);
+  loadingStopwatch(false);
   console.log("Page loaded");
 };
 
@@ -184,5 +245,9 @@ window.onload = function () {
 };
 
 time_chooser_Element.addEventListener("change", () => {
+  LoadThing();
+});
+
+signalChooserElement.addEventListener("change", () => {
   LoadThing();
 });
