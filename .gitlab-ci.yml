@@ -17,7 +17,7 @@ deploy_loppuharjoitus:
   script:
     - export FRONTEND_IMAGE="${CI_REGISTRY_IMAGE}/${REMOTE_DIR}/frontend"
     # Uncomment line below if your app includes backend
-    #- export BACKEND_IMAGE="${CI_REGISTRY_IMAGE}/${REMOTE_DIR}/backend"
+    - export BACKEND_IMAGE="${CI_REGISTRY_IMAGE}/${REMOTE_DIR}/backend"
     - apk update && apk add rsync openssh
     - docker login -u gitlab-ci-token -p "${CI_JOB_TOKEN}" "${CI_REGISTRY}"
     - mkdir -p ~/.ssh && (umask  077 ; echo "${DEPLOY_KEY_PRIVATE}" | base64 -d > ~/.ssh/id_rsa)
@@ -26,9 +26,9 @@ deploy_loppuharjoitus:
     - docker build --no-cache -f DockerfileProd -t "${FRONTEND_IMAGE}" .
     - docker push "${FRONTEND_IMAGE}"
     # Uncomment lines below if your app includes backend
-    #- cd "${CI_PROJECT_DIR}/loppuharjoitus/backend"
-    #- docker build --no-cache -f DockerfileProd -t "${BACKEND_IMAGE}" .
-    #- docker push "${BACKEND_IMAGE}"
+    - cd "${CI_PROJECT_DIR}/loppuharjoitus/backend"
+    - docker build --no-cache -f DockerfileProd -t "${BACKEND_IMAGE}" .
+    - docker push "${BACKEND_IMAGE}"
     - cd "${CI_PROJECT_DIR}/loppuharjoitus"
     - mkdir "${REMOTE_DIR}"
     - cp docker-compose.prod.yml "${REMOTE_DIR}/docker-compose.yml"
