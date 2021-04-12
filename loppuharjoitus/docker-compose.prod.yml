@@ -7,11 +7,11 @@ services:
     env_file:
       - .env
     restart: always
-    # Uncomment lines below if your app includes backend
-  #backend:
-  #  image: ${BACKEND_IMAGE}
-  #  ports:
-  #    - "9000:9000"
-  #  env_file:
-  #    - .env
-  #  restart: always
+    Uncomment lines below if your app includes backend
+  backend:
+   image: ${BACKEND_IMAGE}
+   ports:
+     - "9000:9000"
+   env_file:
+     - .env
+   restart: always
