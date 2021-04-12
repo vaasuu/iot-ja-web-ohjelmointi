@@ -1,8 +1,8 @@
 let units = {
   humidity_in: "%",
   humidity_out: "%",
-  light: "¯\\_(ツ)_/¯",
-  rain: "¯\\_(ツ)_/¯",
+  light: "%",
+  rain: "mm",
   temperature: "°C",
   wind_direction: "°",
   wind_speed: "m/s",
