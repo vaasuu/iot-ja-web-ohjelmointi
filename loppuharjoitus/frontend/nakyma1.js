@@ -1,4 +1,4 @@
-import { units, prettySignalNames } from "/config.js";
+import { units, prettySignalNames, apiBaseUrl } from "/config.js";
 console.log("units", units);
 const tableBody = document.getElementById("tablebody");
 
@@ -12,9 +12,7 @@ const prettifySignalNames = (uglySignalName) => {
 
 const myAsyncFunction = async () => {
   // get data from API
-  const response = await fetch(
-    "http://webapi19sa-1.course.tamk.cloud/v1/weather/limit/50"
-  );
+  const response = await fetch(`${apiBaseUrl}v1/weather/limit/50`);
   // console.log(response);
 
   // get the json response
