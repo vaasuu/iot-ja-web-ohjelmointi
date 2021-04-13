@@ -16,7 +16,6 @@ let units = {
 };
 
 let prettySignalNames = {
-  Air_pres_1: "Air pressure 1",
   humidity_in: "humidity inside",
   humidity_out: "humidity outside",
   light: "light level",
@@ -24,6 +23,13 @@ let prettySignalNames = {
   temperature: "temperature",
   wind_direction: "wind direction",
   wind_speed: "wind speed",
+  Windspeed: "wind speed",
+  Air_pres_1: "air pressure",
+  BMP_temp_1: "BMP temperature",
+  DHT11_hum_1: "DHT11 humidity",
+  DHT11__temp_1: "DHT11 temperature inside",
+  DS1820_temp_1: "DS1820 temperature",
+  HumOut_kry: "humidity outside",
 };
 
 let apiBaseUrl = "https://webapi19sa-1.course.tamk.cloud/";
