@@ -1,17 +1,25 @@
-version: "2.3"
+version: '2.4'
 services:
-  frontend:
-    image: ${FRONTEND_IMAGE}
-    ports:
-      - "80:80"
-    env_file:
-      - .env
-    restart: always
-  # Uncomment lines below if your app includes backend
-  backend:
-   image: ${BACKEND_IMAGE}
+  webapp:
+   image: "${FRONTEND_IMAGE}"
    ports:
-     - "9000:9000"
-   env_file:
-     - .env
+     - "80:80"
    restart: always
+  api:
+    image: "${BACKEND_IMAGE}"
+    ports:
+      - "9000:9000"
+    restart: always
+  db:
+    image: mysql:8.0.3
+    volumes:
+        - /var/lib/mysql
+    environment:
+        MYSQL_ROOT_PASSWORD: db_rootpass
+        MYSQL_DATABASE: db_1
+    restart: always
+  mywebsql:
+    image: quantumobject/docker-mywebsql
+    ports:
+        - "9001:80"
+    restart: always
