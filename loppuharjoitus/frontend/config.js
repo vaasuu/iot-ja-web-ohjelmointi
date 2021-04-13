@@ -19,6 +19,6 @@ let prettySignalNames = {
   wind_speed: "wind speed",
 };
 
-let apiBaseUrl = "http://webapi19sa-1.course.tamk.cloud/";
+let apiBaseUrl = "https://webapi19sa-1.course.tamk.cloud/";
 
 export { units, prettySignalNames, apiBaseUrl };
