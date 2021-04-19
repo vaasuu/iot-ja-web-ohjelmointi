@@ -31,6 +31,7 @@ const myAsyncFunction = async () => {
 
     const cellDataArray = [
       measurement.date_time,
+      key,
       prettifySignalNames(key),
       measurement.data[key],
       units[key],
