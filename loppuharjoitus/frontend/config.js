@@ -13,6 +13,14 @@ let units = {
   DHT11__temp_1: "°C",
   DS1820_temp_1: "°C",
   HumOut_kry: "%",
+  Inn_Temp: "°C",
+  Light_MATB_C: "%",
+  // Lihapekka: "",
+  Wind_dir_MIRC: "°",
+  // aargh: "",
+  humout_Resisthor: "%",
+  WindSpeed_R8: "m/s",
+  Inn_Wind_Speed: "m/s",
 };
 
 let prettySignalNames = {
@@ -30,6 +38,14 @@ let prettySignalNames = {
   DHT11__temp_1: "DHT11 temperature inside",
   DS1820_temp_1: "DS1820 temperature",
   HumOut_kry: "humidity outside",
+  Inn_Temp: "temperature",
+  Light_MATB_C: "light level",
+  // Lihapekka: "",
+  Wind_dir_MIRC: "wind direction",
+  // aargh: "",
+  humout_Resisthor: "humidity outside",
+  WindSpeed_R8: "wind speed",
+  Inn_Wind_Speed: "wind speed",
 };
 
 let apiBaseUrl = "https://webapi19sa-1.course.tamk.cloud/";
