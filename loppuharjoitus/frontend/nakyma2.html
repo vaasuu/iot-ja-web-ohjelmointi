@@ -34,18 +34,20 @@
     <!-- end navbar -->
     <div class="container" id="content">
       <!-- begin content -->
-      <label for="signal_chooser">View </label>
-      <select name="signal_chooser" id="signal_chooser"></select>
+      <div id="chooser_things">
+        <label for="signal_chooser">View </label>
+        <select name="signal_chooser" id="signal_chooser"></select>
 
-      <label for="time_chooser">data for</label>
-      <select name="time_chooser" id="time_chooser">
-        <option value="now">Now</option>
-        <option value="24">24 hours</option>
-        <option value="48">48 hours</option>
-        <option value="72">72 hours</option>
-        <option value="168">1 week</option>
-        <option value="720">1 month</option>
-      </select>
+        <label for="time_chooser">data for</label>
+        <select name="time_chooser" id="time_chooser">
+          <option value="now">Now</option>
+          <option value="24">24 hours</option>
+          <option value="48">48 hours</option>
+          <option value="72">72 hours</option>
+          <option value="168">1 week</option>
+          <option value="720">1 month</option>
+        </select>
+      </div>
 
       <div id="spinner" class="d-flex align-items-center">
         <strong>Loading...</strong>
