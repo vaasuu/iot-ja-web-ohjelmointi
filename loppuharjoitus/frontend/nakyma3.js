@@ -194,6 +194,16 @@ const addChartThing = (measurements, SIGNAL_NAME) => {
   });
 };
 
+document
+  .getElementById("download_chart_img_element")
+  .addEventListener("click", () => {
+    let a = document.createElement("a");
+    a.href = myChart.toBase64Image();
+    a.download = "chart.png";
+    // Trigger the download
+    a.click();
+  });
+
 let signalChooserElement = document.getElementById("signal_chooser");
 
 const fillSignalChooser = async (apiBaseUrl) => {
