@@ -27,7 +27,7 @@ let prettySignalNames = {
   humidity_in: "humidity inside",
   humidity_out: "humidity outside 1",
   light: "light level",
-  rain: "rain",
+  rain: "rain level",
   temperature: "temperature 1",
   wind_direction: "wind direction 1",
   wind_speed: "wind speed 1",
